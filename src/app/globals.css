@@ -40,6 +40,19 @@ input:focus {
   outline: 1px solid #3e2a82;
 }
 
+
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px;
+}
+
+
+
+
+
+
+
 @media (min-width: 1024px) {
 
   /* Designing for scroll-bar */
