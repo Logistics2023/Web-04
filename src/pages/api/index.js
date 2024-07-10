@@ -1,12 +1,15 @@
 const nodemailer = require('nodemailer');
 
 export default function handler(req, res) {
-
+    console.log(req.body['Correo electrónico'])
     const transporter = nodemailer.createTransport({
+        // host: 'mail.logisticsgear.com.bo',
         host: 'mail.logisticsappbolivia.com',
         port: 465,
         secure: true,
         auth: {
+            // user: 'info@logisticsgear.com.bo',
+            // pass: 'Jose84226'
             user: 'rrhh@logisticsappbolivia.com',
             pass: 'LGTRANSPORT2017.'
         }
@@ -16,14 +19,14 @@ export default function handler(req, res) {
         var fileBuffer = Buffer.from(req.body.cv, 'base64')
         const response = await transporter.sendMail({
             from: 'rrhh@logisticsappbolivia.com',
-            to: 'proyection009@gmail.com',
+            to: req.body['Correo electrónico'],
             subject: 'Gracias por postular en Logistics Gear',
             text: 'Gracias por postular, pronto nos comunicaremos con usted.',
             html: '<p>Gracias por postular, pronto nos comunicaremos con usted.</p>'
         });
         await transporter.sendMail({
-            from: 'rrhh@logisticsappbolivia.com',
-            to: 'proyection009@gmail.com',
+            from: req.body['Correo electrónico'],
+            to: 'rrhh@logisticsappbolivia.com',
             subject: ` Nueva postulación: ${req.body['Nombre completo']} - ${req.body['Area a postula']}`,
             text: `
                 Nombre: ${req.body['Nombre completo']}\n
@@ -51,13 +54,13 @@ export default function handler(req, res) {
     // let transporter = nodemailer.createTransport({
     //     service: 'gmail',
     //     auth: {
-    //         user: 'proyection009@gmail.com',
+    //         user: req.body['Correo electrónico'],
     //         pass: 'hfyn zmif dudw lihd'
     //     }
     // });
     // let mailOptions = {
     //     from: 'votre.email@gmail.com',
-    //     to: 'proyection009@gmail.com',
+    //     to: req.body['Correo electrónico'],
     //     subject: 'Envoi d\'email via Node.js',
     //     text: 'Bonjour, ceci est un email envoyé via Node.js et Nodemailer.'
     // };

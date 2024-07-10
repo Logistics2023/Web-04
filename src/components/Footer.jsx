@@ -2,36 +2,38 @@
 import { useUser } from '@/context/Context'
 import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 import Slider from '@/components/Slider'
+import Button from '@/components/Button'
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { cliente, languaje } = useUser()
+const router = useRouter()
 
   return (
     <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-20" id="Contactos">
-<div className='overflow-hidden  bg-gradient-to-t from-[#00195cc9] via-[#00195cc9] to-[#00195cc9]'>
-          {/* <img src="/bg-logo.webp" className=' absolute w-full' alt="" /> */}
+      <div className='overflow-hidden  bg-gradient-to-t from-[#00195cc9] via-[#00195cc9] to-[#00195cc9]'>
+        {/* <img src="/bg-logo.webp" className=' absolute w-full' alt="" /> */}
 
 
-          {cliente.Slider2 && <div className='relative  pb-[100px] lg:pb-0 '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Socios  Comerciales' : 'Business partners'}</h1>
-            <Slider content={Object.values(cliente.Slider2)} />
-          </div>}
+        {cliente.Slider2 && <div className='relative  pb-[100px] lg:pb-0 '>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Socios  Comerciales' : 'Business partners'}</h1>
+          <Slider content={Object.values(cliente.Slider2)} />
+        </div>}
 
-          {cliente.Slider3 && <div className='relative pb-[100px] lg:pb-0  '>
-            <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Empresas' : 'Companies'}</h1>
-            <Slider content={Object.values(cliente.Slider3)} rtl={true} />
-          </div>}
-        </div>
+        {cliente.Slider3 && <div className='relative pb-[100px] lg:pb-0  '>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Empresas' : 'Companies'}</h1>
+          <Slider content={Object.values(cliente.Slider3)} rtl={true} />
+        </div>}
+      </div>
 
       <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
-        
 
 
 
 
 
 
-        <h3 className={`w-full pt-[200px] text-white text-left font-bold text-[26px] pl-[5px]`}>{languaje === 'Español' ? 'Contactos' : 'Contacts'}</h3>
+        <h3 className={`w-full text-white text-left pt-[150px] font-bold text-[26px] pl-[5px]`}>{languaje === 'Español' ? 'Contactos' : 'Contacts'}</h3>
         <br />
 
         <div className="p-4  ">
@@ -75,7 +77,7 @@ export default function Home() {
         </div>
 
         <div className="w-full px-6 pt-6 flex justify-center bg-[#12206e]">
-          <div className="mb-6 flex justify-center">
+          <div className="mb-1 flex justify-center">
             <a
               href={cliente.contactos && cliente.contactos.facebook ? cliente.contactos.facebook : '#'}
               target='_blank'
@@ -158,15 +160,21 @@ export default function Home() {
             </a>
 
           </div>
-        </div>
 
+        </div>
+        <div className='w-full  pb-[20px] flex flex-col justify-center items-center relative bg-[#12206e]'>
+          <marquee behavior="" direction="">
+            <button className='border px-5 ml-5  rounded-full bg-[#00000070]' onClick={() => router.push('/Postulaciones')}>Postular a Logistics Gear Lta</button>
+
+          </marquee>
+        </div>
         <div
           className="p-4 text-center "
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
           © 2024 Copyright
           <a className="text-whitehite underline" href="https://swoou.com/"
-          >LogisticsGear Ldta</a
-          >
+          >LogisticsGear Ldta</a>
+
         </div>
 
 
