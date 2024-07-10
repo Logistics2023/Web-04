@@ -111,7 +111,7 @@ export default function BottomNavigation({ rol }) {
                                     <path d="M14 14C14 15.105 14 16 10 16C6 16 6 15.105 6 14C6 12.895 7.79 12 10 12C12.21 12 14 12.895 14 14Z" stroke="white" stroke-width="1.5" />
                                     <path d="M1 9.417C1 6.219 1 4.62 1.378 4.082C1.755 3.545 3.258 3.03 6.265 2.001L6.838 1.805C8.405 1.268 9.188 1 10 1C10.811 1 11.595 1.268 13.162 1.805L13.735 2.001C16.742 3.03 18.245 3.545 18.622 4.082C19 4.62 19 6.22 19 9.417V10.991C19 13.496 18.163 15.428 17 16.904M1.193 13C2.05 17.298 5.576 19.513 7.899 20.527C8.62 20.842 8.981 21 10 21C11.02 21 11.38 20.842 12.101 20.527C12.68 20.275 13.332 19.947 14 19.533" stroke="white" stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
-                            </button> */}
+                            </button> */}     
 
                             <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-[40px] h-[40px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 z-50" onClick={openNav} aria-controls="navbar-default" aria-expanded="false">
                                 <span className="sr-only">Open main menu</span>
