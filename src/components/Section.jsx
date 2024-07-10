@@ -113,14 +113,14 @@ function Componente2({ title, image, paragraph, id, route }) {
 
   return (
     <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-      <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 lg:flex lg:flex-col lg:justify-between lg:items-center rounded-[15px] '>
-        <img src={image} className="relative w-[150px] md:min-h-[40%] lg:max-w-[200px] object-contain p-5" alt="" />
-        <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px] lg:rounded-t-[0]  lg:rounded-b-[15px]">
+      <div className='relative w-full h-full  md:w-auto bg-[#ffffffcb] my-5   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
+        <img src={image} className="relative max-h-[90vw] lg:w-[25vw] overflow-hidden lg:h-[25vw] block w-full object-cover rounded-t-[15px] " alt="" />
+        <div className="relative  w-full h-full bg-gradient-to-t  from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 px-5 py-5  lg:rounded-t-[0]  rounded-b-[15px]">
           <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
-          <p className="relative text-white ">
+          <p className="relative text-white md:w-[20vw]">
             {`${extractContent(paragraph).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`}
           </p>
-          <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
+          <div className=" relative bottom-0 flex mt-5 mb-10 justify-end  w-[100%]">
             <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
          cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Galeria?query=${id}&item=${route}`)}>Saber mas</button>
           </div>
@@ -155,7 +155,7 @@ export default function Section({ subtitle, subtitleEN, description, description
     //   setData(db)
     // }).catch(console.error);
   }, [])
-console.log(languaje)
+  console.log(languaje)
 
   return <Suspense> <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
 
@@ -164,7 +164,7 @@ console.log(languaje)
 
       <div className='relative px-5 py-12 w-full lg:px-[100px]  z-30    from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
         <div>
-          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{subtitleEN &&  languaje !== 'Español' ? subtitleEN  : subtitle  }</h3></Subtitle>
+          <Subtitle><h3 className='text-[30px] text-[white] text-center font-medium  py-10'>{subtitleEN && languaje !== 'Español' ? subtitleEN : subtitle}</h3></Subtitle>
           <ScrollAnimation animateIn='bounceInLeft'
             animateOut='bounceOutLeft'
             initiallyVisible={true}

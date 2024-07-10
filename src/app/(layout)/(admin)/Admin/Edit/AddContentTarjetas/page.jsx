@@ -107,7 +107,7 @@ export default function Home() {
 
         <img src="/airplane-bg.jpg" className='fixed  w-screen h-screen  object-cover  ' alt="" />
 
-        <div className="fixed  pb-[100px] top-0 left-0 h-screen w-full overflow-y-auto bg-[#000000b4] p-0 z-40 " >
+        <div className="fixed   pb-[100px] lg:pb-0  top-0 left-0 h-screen w-full overflow-y-auto bg-[#000000b4] p-0 z-40 " >
 
             <div className="relative w-full md:h-[70vh] overflow-hidden  bg-transparent border-b border-gray-900/10 pt-[90px] pb-16 lg:pb-4 px-5">
                 <div className={`bg-white h-full   md:grid md:grid-cols-2`}>

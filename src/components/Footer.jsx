@@ -8,26 +8,34 @@ export default function Home() {
 
   return (
     <footer className="relative w-screen  text-center text-white pb-[70px] lg:pb-0 z-20" id="Contactos">
-      <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
+<div className='overflow-hidden  bg-gradient-to-t from-[#00195cc9] via-[#00195cc9] to-[#00195cc9]'>
+          {/* <img src="/bg-logo.webp" className=' absolute w-full' alt="" /> */}
 
- 
 
-          {cliente.Slider2 && <div className='relative pb-[100px] '>
+          {cliente.Slider2 && <div className='relative  pb-[100px] lg:pb-0 '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Socios  Comerciales' : 'Business partners'}</h1>
             <Slider content={Object.values(cliente.Slider2)} />
           </div>}
 
-          {cliente.Slider3 && <div className='relative pb-[200px] '>
+          {cliente.Slider3 && <div className='relative pb-[100px] lg:pb-0  '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Empresas' : 'Companies'}</h1>
-            <Slider content={Object.values(cliente.Slider3)} />
+            <Slider content={Object.values(cliente.Slider3)} rtl={true} />
           </div>}
+        </div>
+
+      <div className='  bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c]'>
+        
 
 
-            <h3 className={`w-full text-white text-left font-bold text-[26px] pl-[5px]`}>{languaje === 'Español' ? 'Contactos' : 'Contacts'}</h3>
-          <br />
-       
+
+
+
+
+        <h3 className={`w-full pt-[200px] text-white text-left font-bold text-[26px] pl-[5px]`}>{languaje === 'Español' ? 'Contactos' : 'Contacts'}</h3>
+        <br />
+
         <div className="p-4  ">
-       
+
           <p className='w-full flex justify-start items-center py-3 text-[16px]'>
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M31.7656 33.5626L35.2656 30.0626C35.737 29.597 36.3335 29.2783 36.9825 29.1452C37.6315 29.012 38.3052 29.0702 38.9219 29.3126L43.1875 31.0157C43.8106 31.2686 44.3449 31.7004 44.7231 32.2565C45.1013 32.8126 45.3063 33.4682 45.3125 34.1407V41.9532C45.3089 42.4107 45.2127 42.8627 45.0298 43.282C44.8469 43.7013 44.581 44.0793 44.2482 44.3931C43.9153 44.707 43.5224 44.9502 43.0931 45.1083C42.6637 45.2663 42.2069 45.3358 41.75 45.3126C11.8594 43.4532 5.82812 18.1407 4.6875 8.45319C4.63455 7.97746 4.68292 7.49592 4.82945 7.04024C4.97597 6.58455 5.21731 6.16505 5.5376 5.80934C5.85789 5.45363 6.24987 5.16976 6.68774 4.97641C7.12562 4.78307 7.59947 4.68463 8.07812 4.68756H15.625C16.2984 4.68956 16.9559 4.89298 17.5128 5.27167C18.0697 5.65036 18.5006 6.187 18.75 6.81256L20.4531 11.0782C20.7035 11.6924 20.7674 12.3667 20.6368 13.017C20.5062 13.6672 20.1869 14.2646 19.7187 14.7344L16.2187 18.2344C16.2187 18.2344 18.2344 31.8751 31.7656 33.5626Z" fill="white" />

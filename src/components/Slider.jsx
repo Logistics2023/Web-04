@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-function Responsive({ content }) {
+function Responsive({ content, rtl }) {
 	var settings = {
 		dots: false,
 		infinite: true,
@@ -15,34 +15,35 @@ function Responsive({ content }) {
 		cssEase: "linear",
 		pauseOnHover: false,
 		arrows: false,
+		rtl: rtl ? true : false,
 		responsive: [
 			{
-			  breakpoint: 1024,
-			  settings: {
-				slidesToShow: 3,
-			  }
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 3,
+				}
 			},
 			{
-			  breakpoint: 600,
-			  settings: {
-				slidesToShow: 2,
-			  }
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+				}
 			},
 			{
-			  breakpoint: 480,
-			  settings: {
-				slidesToShow: 2,
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 2,
 
-			  }
+				}
 			}
-		  ]
+		]
 
 	};
 	return (
 		<div className="slider-container">
 			<Slider {...settings} autoplay={true}>
 				{content.map((item, index) => (
-					<div>
+					<div className="border-b-[10px] border-double border-gray-400 border-spacing-5">
 						<img className='h-[50px] md:h-[100px] w-auto' src={item.url} alt="" />
 					</div>
 				))}

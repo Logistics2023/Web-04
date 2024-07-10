@@ -54,7 +54,7 @@ export default function Home() {
       }}>
       <img src="/airplane-bg.jpg" className='fixed top-0 w-screen h-screen  object-cover ' alt="" />
 
-      <div className='relative  pt-[100px] pb-[200px]  bg-gradient-to-t from-[#00061860] to-[#000618d1]  lg:pb-[100px] min-h-screen lg:py-[50px] flex flex-col justify-center z-10 '>
+      <div className='relative  pt-[100px] pb-[200px]  bg-gradient-to-t from-[#00061860] to-[#000618d1]  lg: pb-[100px] lg:pb-0  min-h-screen lg:py-[50px] flex flex-col justify-center z-10 '>
         <div className='flex justify-center'>
           <img src="/logo.svg" className='w-[80vw] sm:w-[50vw] lg:w-[25vw]' alt="User" />
         </div>

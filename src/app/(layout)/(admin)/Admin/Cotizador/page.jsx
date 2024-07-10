@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <div className="relative min-h-full">
             <img src="/airplane-bg.jpg" className='fixed top-0 w-screen h-screen  object-cover ' alt="" />
-            <div className='relative  py-[100px]  bg-gradient-to-t from-[#00061860] to-[#000618d1] lg:pb-[100px] h-screen flex flex-col justify-center z-10 '>
+            <div className='relative  py-[100px]  bg-gradient-to-t from-[#00061860] to-[#000618d1] lg: pb-[100px] lg:pb-0  h-screen flex flex-col justify-center z-10 '>
                 <div className='flex justify-center'>
                     <img src="/logo.svg" className='w-[80vw] sm:w-[50vw] lg:w-[25vw]' alt="User" />
                 </div>

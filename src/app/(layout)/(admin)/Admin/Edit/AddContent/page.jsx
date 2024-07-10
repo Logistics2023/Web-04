@@ -101,7 +101,7 @@ export default function Home() {
 
             <img src="/airplane-bg.jpg" className='fixed  w-screen h-screen  object-cover  ' alt="" />
 
-            <div className="fixed  pb-[100px] top-0 left-0 flex justify-center w-full h-auto bg-[#000000b4] p-0 z-40 " >
+            <div className="fixed   pb-[100px] lg:pb-0  top-0 left-0 flex justify-center w-full h-auto bg-[#000000b4] p-0 z-40 " >
 
                 <div className="relative w-[95%] h-screen overflow-y-scroll lg:w-[50%] bg-white border-b border-gray-900/10 pt-16 pb-16 lg:pb-4 px-5">
                     <div className="absolute w-[50px] top-5 right-5 text-white p-1 rounded-tl-lg rounded-br-lg text-center bg-red-600" onClick={close}>
