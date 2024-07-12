@@ -600,7 +600,7 @@ export default function Home() {
           </div>
 
         </div>
-        {cliente.Slider1 && <div className='relative   pb-[100px] lg:pb-0  '
+        {cliente.Slider1 && <div className='relative   pb-[0px] lg:pb-0  '
     
 
           style={{
