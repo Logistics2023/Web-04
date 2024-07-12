@@ -201,7 +201,7 @@ export default function Home() {
       router.push('/Login')
       return
     }
-console.log('click')
+
     inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0
       ? handlerElement('FCL')
       : HandlerCheckOut2()
@@ -260,13 +260,7 @@ console.log('click')
   //   return console.log(await res.json());
   // }
 
-  // getTranslate()
-
-
-
-  // console.log(inputRef.current.value)
-  // console.log(inputRef2.current.value)
-  // console.log(cliente.inicio.content)
+ 
 
   function preValidate() {
     if (inputRef.current && inputRef2.current && selectValue.MERCANCIA && selectValue['PESO (KG)'] && selectValue.SERVICIO && selectValue['TIPO DE UNIDAD'] && selectValue['VOLUMEN M3']) {
@@ -277,7 +271,7 @@ console.log('click')
     }
   }
 
-  console.log(hash)
+  // console.log(hash)
   useEffect(() => {
     // const section = hash.replace("#", "");
     // if (section) scrollToSection(section);
@@ -334,8 +328,7 @@ console.log('click')
                   <li className={`-mb-px mr-1 ${((hash === '#FCL')) && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}); handlerElement('FCL') }}>
                     <a className=" inline-block rounded-t py-2 px-2 text-blue-500 font-semibold" href="#FCL">{languaje === 'Español' ? 'Cotizador FCL' : 'Quote FCL'}</a>
                   </li>
-                  {console.log(element)}
-                  {console.log(hash)}
+               
                   <li className={`-mb-px mr-1 ${(hash === '#FTL') && 'bg-[#F7BE38] border border-[blue] border-b-transparent'}`} onClick={() => { setSelectValue({}); handlerElement('FTL') }}>
                     <a className=" inline-block rounded-t py-2 px-2 text-blue-500  font-semibold" href="#FTL">{languaje === 'Español' ? 'Cotizador FTL' : 'Quote  FTL'}</a>
                   </li>

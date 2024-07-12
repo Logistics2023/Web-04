@@ -102,7 +102,7 @@ function Componente2({ title, image, paragraph, id, route }) {
 
   const router = useRouter()
 
-  console.log('render')
+  // console.log('render')
 
 
   // getTranslate().then((db) => {
@@ -153,7 +153,7 @@ export default function Section({ subtitle, subtitleEN, description, description
     //   setData(db)
     // }).catch(console.error);
   }, [])
-  console.log(languaje)
+  // console.log(languaje)
 
   return <section className='relative w-full   bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}
     style={{

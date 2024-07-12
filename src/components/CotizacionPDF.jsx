@@ -133,12 +133,46 @@ const styles = StyleSheet.create({
 
 
 const PDFView = ({ click }) => {
-    const { pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL,selectValue, setSelectValue,  naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
+    const { user, userDB, pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL, selectValue, setSelectValue, naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
 
     const [isCliente, setisCliente] = useState(false);
 
     const Br = () => "\n";
 
+    const blobToBase64 = blob => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        return new Promise(resolve => {
+            reader.onloadend = () => {
+                resolve(reader.result);
+            };
+        });
+    };
+
+    async function handlerBlob(blob) {
+
+        if (blob && blob !== undefined) {
+            const base64 = await blobToBase64(blob)
+
+            const res = await fetch('/api/sendCotizacion', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: user,
+                    userDB: userDB,
+                    element,
+                    pdfBase64: base64
+                })
+            })
+            console.log(res)
+
+        }
+
+    }
+  
     useEffect(() => {
         setisCliente(true)
         setUserPdfData({ tarifa: [''], otrosGastos: [''], incluye: [''], excluye: [''], notas: [''], ...pdfData })
@@ -249,7 +283,7 @@ const PDFView = ({ click }) => {
 
 
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>TOTAL</Text><Text style={{ ...styles.value, fontWeight:'bold', backgroundColor: 'yellow' }}>
+                                                    <Text style={styles.key}>TOTAL</Text><Text style={{ ...styles.value, fontWeight: 'bold', backgroundColor: 'yellow' }}>
                                                         {
                                                             !isNaN((item.flete && item.flete !== undefined ? Object.values(item.flete).reduce((acc, i) => {
                                                                 let cal = i['ic'] ? acc + i['ic'] * 1 : acc
@@ -277,7 +311,7 @@ const PDFView = ({ click }) => {
                                                     </Text>
                                                 </View>
 
-                                                <View style={{...styles.content, marginTop: '15px'}}>
+                                                <View style={{ ...styles.content, marginTop: '15px' }}>
                                                     <Text style={{ width: '50%' }}></Text>
                                                     <Text style={{ width: '50%', backgroundColor: 'yellow', padding: '3px', textAlign: 'right', fontFamily: 'Inter', fontWeight: 'medium' }}>Fecha maxima de vigencia de cotizacion: {item.VALIDEZ && item.VALIDEZ !== undefined && item.VALIDEZ.split('-').reverse().map((e) => e + '/')}</Text>
                                                 </View>
@@ -288,31 +322,31 @@ const PDFView = ({ click }) => {
 
                                 </>
                             }
-                            {element === 'FTL' && calcValue &&calcValue !== 'NO DATA' &&<View style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium', }}>
-                                                        <Text style={{}}>
-                                                            <Br />
-                            <Br />
-                            Nota importante para cotizaciones de transporte terrestre:
-                                                        </Text>
+                            {element === 'FTL' && calcValue && calcValue !== 'NO DATA' && <View style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium', }}>
+                                <Text style={{}}>
+                                    <Br />
+                                    <Br />
+                                    Nota importante para cotizaciones de transporte terrestre:
+                                </Text>
 
-                                                        <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
-                                                       
-                            Por favor tenga en cuenta que las tarifas proporcionadas en esta cotización son estimaciones preliminares y están sujetas a variaciones en caso de cambios en las dimensiones o el peso de la carga. Además, estas tarifas son válidas únicamente para carga general. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para carga que requiera condiciones especiales o exceda las dimensiones o pesos estándares, es necesario que se ponga en contacto con nosotros para ajustar la cotización a sus necesidades específicas.
-                            <Br /><Br />
-                            Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de<Br /> <Br />
-                                                        </Text>
-                                                        </View>
-                                                    }
-                        {element === 'FCL' && calcValueFCL && calcValueFCL !== 'NO DATA' &&<View style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium',} }>
-                                                          <Text>
-                            Nota importante sobre las cotizaciones automáticas:                            </Text>
-                                                            <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
-                                                                <Br /> <Br />
-                            <Br /> <Br />
-                            Las tarifas generadas automáticamente por este cotizador están sujetas a la confirmación de espacio por las navieras y aplican exclusivamente para carga general no peligrosa ni sobredimensionada. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para cargas clasificadas como IMO o que excedan las dimensiones estándar, les solicitamos contactar directamente a través de nuestros siguientes canales para obtener una cotización adecuada a sus necesidades específicas:
-                            <Br /> <Br />
-                                                            </Text>
-                                                        </View>}
+                                <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
+
+                                    Por favor tenga en cuenta que las tarifas proporcionadas en esta cotización son estimaciones preliminares y están sujetas a variaciones en caso de cambios en las dimensiones o el peso de la carga. Además, estas tarifas son válidas únicamente para carga general. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para carga que requiera condiciones especiales o exceda las dimensiones o pesos estándares, es necesario que se ponga en contacto con nosotros para ajustar la cotización a sus necesidades específicas.
+                                    <Br /><Br />
+                                    Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de<Br /> <Br />
+                                </Text>
+                            </View>
+                            }
+                            {element === 'FCL' && calcValueFCL && calcValueFCL !== 'NO DATA' && <View style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium', }}>
+                                <Text>
+                                    Nota importante sobre las cotizaciones automáticas:                            </Text>
+                                <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
+                                    <Br /> <Br />
+                                    <Br /> <Br />
+                                    Las tarifas generadas automáticamente por este cotizador están sujetas a la confirmación de espacio por las navieras y aplican exclusivamente para carga general no peligrosa ni sobredimensionada. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para cargas clasificadas como IMO o que excedan las dimensiones estándar, les solicitamos contactar directamente a través de nuestros siguientes canales para obtener una cotización adecuada a sus necesidades específicas:
+                                    <Br /> <Br />
+                                </Text>
+                            </View>}
 
                             <View style={styles.content}>
                                 <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: '#294B98', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium', }}>
@@ -332,7 +366,20 @@ const PDFView = ({ click }) => {
                 </Document>}
                 fileName={`COTIZACIÓN ${element} ${generateUUID()}`}>
 
+                {({ blob, url, loading, error }) =>
+                    loading
+                        ? 'Loading document...'
+                        : <button>
+                            {handlerBlob(blob)}
+                            Descargar
+                        </button>
+                }
+
+
+
+                {/* 
                 <button type="submit" className="w-full flex  justify-center items-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px]  px-5 py-2 text-center" >
+               
                     Cotizacion PDF
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.568 1.4248L20.3932 5.41231V20.5758H6.10352V20.6253H20.442V5.46249L16.568 1.4248Z" fill="#909090" />
@@ -345,7 +392,7 @@ const PDFView = ({ click }) => {
                         <path d="M16.5215 1.375V5.41269H20.3942L16.5215 1.375Z" fill="#F4F4F4" />
                         <path d="M6.17005 3.06411H5.27148V6.36411H5.98098V5.25173L6.13773 5.26067C6.28943 5.25858 6.43973 5.2314 6.58255 5.18023C6.7081 5.1376 6.82349 5.06949 6.92148 4.98017C7.02122 4.89568 7.09945 4.7887 7.14973 4.66804C7.21934 4.46778 7.24399 4.25465 7.22192 4.04379C7.218 3.89313 7.19158 3.7439 7.14355 3.60104C7.10026 3.49779 7.03589 3.40471 6.95456 3.32776C6.87323 3.25081 6.77673 3.19168 6.67123 3.15417C6.57987 3.12016 6.48515 3.09596 6.38867 3.08198C6.31616 3.07017 6.24282 3.0642 6.16936 3.06411M6.03942 4.64123H5.97823V3.62373H6.11161C6.17017 3.61951 6.22893 3.6285 6.28355 3.65004C6.33817 3.67158 6.38725 3.70511 6.42717 3.74817C6.50989 3.85887 6.55408 3.99361 6.55298 4.13179C6.55298 4.30092 6.55298 4.45423 6.40036 4.56217C6.29043 4.62272 6.16526 4.64995 6.04011 4.64054M8.56323 3.05517C8.48692 3.05517 8.41267 3.06067 8.36042 3.06273L8.19886 3.06686H7.66261V6.36686H8.29373C8.5349 6.37306 8.77496 6.33219 9.00048 6.24654C9.18206 6.17483 9.34279 6.05878 9.46798 5.90898C9.59067 5.75852 9.67827 5.58261 9.72442 5.39404C9.77865 5.18087 9.80499 4.96156 9.8028 4.74161C9.81625 4.48184 9.79615 4.22142 9.74298 3.96679C9.69209 3.77958 9.59789 3.60696 9.46798 3.46286C9.36609 3.34633 9.24076 3.25262 9.10017 3.18786C8.97974 3.13203 8.85301 3.09094 8.72273 3.06548C8.67093 3.05699 8.61848 3.05308 8.56598 3.05379M8.44086 5.76048H8.37211V3.65398H8.38105C8.52278 3.63759 8.66621 3.66317 8.79355 3.72754C8.88682 3.80202 8.96281 3.89584 9.0163 4.00254C9.07402 4.11484 9.10729 4.23808 9.11392 4.36417C9.12011 4.51542 9.11392 4.63917 9.11392 4.74161C9.11646 4.8596 9.10887 4.9776 9.09123 5.09429C9.06961 5.21396 9.03046 5.32979 8.97505 5.43804C8.91245 5.539 8.82696 5.62379 8.72548 5.68554C8.64072 5.74055 8.54023 5.76615 8.43948 5.75842M11.9299 3.06686H10.2593V6.36686H10.966V5.05786H11.8598V4.44461H10.966V3.68011H11.9285V3.06686" fill="white" />
                     </svg>
-                </button>
+                </button> */}
 
             </PDFDownloadLink>}
         </div>
