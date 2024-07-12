@@ -119,115 +119,9 @@ export default function Home() {
     setFocus('')
   }
 
-  function handlerSelect(i) {
-    inputRef.current.value = i
-    inputRef2.current.value = ''
-
-    setFocus('')
-  }
-  function handlerSelect2(i) {
-    inputRef2.current.value = i
-    setFocus('')
-  }
+  
 
 
-  function handlerClickSelect(name, i, uuid) {
-    let db = { [name]: i }
-    setSelectValue({ ...selectValue, ...db })
-  }
-
-
-  function write() {
-    writeUserData('Cliente/comisionFTL', {
-      [generateUUID()]: {
-        de: 1,
-        hasta: 1000,
-        monto: 20,
-      },
-      [generateUUID()]: {
-        de: 1001,
-        hasta: 10000,
-        monto: '2%,'
-      },
-      [generateUUID()]: {
-        de: 10001,
-        hasta: 20000,
-        monto: '1.50%',
-      },
-      [generateUUID()]: {
-        de: 20001,
-        hasta: 30000,
-        monto: '1.25%',
-      },
-      [generateUUID()]: {
-        de: 30001,
-        hasta: 50000,
-        monto: '1%',
-      },
-      [generateUUID()]: {
-        de: 50001,
-        hasta: 100000,
-        monto: '0.75%',
-      },
-      [generateUUID()]: {
-        de: 100001,
-        hasta: 1000000000000,
-        monto: '0.50%',
-      },
-    }
-    )
-  }
-  function calculator(e) {
-    e.preventDefault()
-    if (user === null || user === undefined) {
-      router.push('/Login')
-      return
-    }
-
-    let val = Object.values(cliente.priceFTL).find((i) => {
-      return i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value && i.MERCANCIA === selectValue.MERCANCIA && i['PESO (KG)'] >= selectValue['PESO (KG)'] && i.SERVICIO === selectValue.SERVICIO && i['TIPO DE UNIDAD'] === selectValue['TIPO DE UNIDAD'] && i['VOLUMEN M3'] >= selectValue['VOLUMEN M3']
-    })
-    val !== undefined ? setCalcValue({ ...val, ['PESO (KG)']: selectValue['PESO (KG)'], ['VOLUMEN M3']: selectValue['VOLUMEN M3'], TOTAL: val['SERVICIOS LOGISTICOS USD'] * 1 + val['FLETE USD'] * 1 }) : setUserSuccess('NO DATA')
-  }
-  function calculatorFCL(e) {
-    e.preventDefault()
-    if (user === null || user === undefined) {
-      router.push('/Login')
-      return
-    }
-
-    let val = Object.values(cliente.priceFCL).filter((i) => {
-      return i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value
-    })
-    val !== undefined ? setCalcValueFCL(val) : setUserSuccess('NO DATA')
-  }
-  function handlerSeeMore(key) {
-    seeMore === key ? setSeeMore('') : setSeeMore(key)
-  }
-
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-  function onChangeHandler(e) {
-    setCode(e.target.value)
-
-  }
-  function filterTracking(e) {
-    e.preventDefault()
-
-    if (userDB) {
-      router.push(`/Tracking?item=${code}`)
-    } else {
-      setModal('REGISTRATE')
-    }
-  }
-  function handlerElement(data) {
-    if (userDB) {
-      setElement(data)
-    } else {
-      setModal('REGISTRATE')
-    }
-  }
 
   // async function getTranslate() {
   //   const res = await fetch("/api/translate");
@@ -251,11 +145,8 @@ export default function Home() {
     }
   }
 
-  console.log(hash)
-  useEffect(() => {
-    // const section = hash.replace("#", "");
-    // if (section) scrollToSection(section);
-  }, [hash, languaje]);
+  console.log(cliente)
+ 
 
   return (
     <main className={`relative  w-screen `} onClick={reset} id='inicio'>
@@ -275,7 +166,7 @@ export default function Home() {
       {cliente['experiencia'] && <Section
         subtitle={cliente['experiencia'].titulo} subtitleEN={cliente['experiencia'].tituloEN}
         description={cliente['experiencia'].content} descriptionEN={cliente['experiencia'].contentEN}
-        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'testimonios'} especial={true}></Section>}
+        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'} especial={true}></Section>}
 
       <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195cdc] via-[#293f79d3] to-[#00195cdc]'>
         {/* <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195c] via-[#293e79] to-[#00195c]'> */}
@@ -283,7 +174,7 @@ export default function Home() {
 
 
         {cliente.Slider1 && <>
-          <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white' id='testimonios'>Testimonios</h1>
           <SliderTestimonios content={Object.values(cliente.Testimonios)} />
         </>}
 
