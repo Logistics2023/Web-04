@@ -38,10 +38,10 @@ export default function Home() {
     function saveNota(e, key) {
         e.preventDefault()
         console.log(e.target[0].value)
-        // if (data[key]) {
-        //     setUserSuccess('Cargando')
-        //     writeUserData(`Cliente/nota${query}/`, data[key], setUserSuccess)
-        // }
+        if (e.target[0].value) {
+            setUserSuccess('Cargando')
+            writeUserData(`Cliente/`, {[`nota${query}`]:e.target[0].value}, setUserSuccess)
+        }
     }
     function getDB() {
         getSpecificData('/Cliente', setCliente)
@@ -120,7 +120,7 @@ export default function Home() {
                         </div>
                     </div> */}
                     {(query === 'FTL') && <form action="" className='flex items-center p-2' onSubmit={saveNota}>
-                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' placeholder='Nota de impresion' />
+                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' defaultValue={cliente.notaFTL} placeholder='Nota de impresion' />
                         <Button theme="Success" >Guardar</Button>
                     </form>}
 
@@ -210,7 +210,7 @@ export default function Home() {
                         </tbody>
                     </table>}
                     {(query === 'FCL') && <form action="" className='flex items-center p-2' onSubmit={saveNota}>
-                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' placeholder='Nota de impresion' />
+                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' defaultValue={cliente.notaFCL}  placeholder='Nota de impresion' />
                         <Button theme="Success" >Guardar</Button>
                     </form>}
 
