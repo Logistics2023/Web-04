@@ -25,6 +25,7 @@ body {
   padding: 0;
   min-width: 100vw;
   min-height: 100vh;
+  font-size: 12px;
   font-weight: 300;
 }
 
@@ -40,9 +41,7 @@ input:focus {
 }
 
 
-input[type='text'],
-input[type='number'],
-textarea {
+input{
   font-size: 16px;
 } 
 
@@ -53,7 +52,10 @@ textarea {
 
 
 @media (min-width: 1024px) {
-
+  input{
+    font-size: 16px;
+  } 
+  
   /* Designing for scroll-bar */
   ::-webkit-scrollbar {
     width: 7px;
