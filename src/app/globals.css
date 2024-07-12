@@ -37,24 +37,13 @@ body {
 }
 
 input:focus {
-  outline: 1px solid #3e2a82;
+  outline: none;
 }
-
-
-input{
-  font-size: 16px;
-} 
-
-
-
-
 
 
 
 @media (min-width: 1024px) {
-  input{
-    font-size: 16px;
-  } 
+ 
   
   /* Designing for scroll-bar */
   ::-webkit-scrollbar {
