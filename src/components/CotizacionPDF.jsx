@@ -2,6 +2,8 @@ import { PDFDownloadLink, Document, Page, View, Text, Image, PDFViewer, StyleShe
 import { useUser } from "../context/Context.js"
 import { useState, useRef, useEffect } from 'react'
 import Button from './Button'
+import { generateUUID } from '@/utils/UIDgenerator'
+
 // Font.register({
 //     family: "Inter",
 //     fonts: [
@@ -328,7 +330,7 @@ const PDFView = ({ click }) => {
 
                     </Page>
                 </Document>}
-                fileName={`COTIZACIÓN ${element}`}>
+                fileName={`COTIZACIÓN ${element} ${generateUUID()}`}>
 
                 <button type="submit" className="w-full flex  justify-center items-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px]  px-5 py-2 text-center" >
                     Cotizacion PDF

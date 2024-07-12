@@ -189,7 +189,7 @@ export default function Home() {
     })
     val !== undefined ? setCalcValue({ ...val, ['PESO (KG)']: selectValue['PESO (KG)'], ['VOLUMEN M3']: selectValue['VOLUMEN M3'], TOTAL: val['SERVICIOS LOGISTICOS USD'] * 1 + val['FLETE USD'] * 1 }) : setUserSuccess('NO DATA')
   }
-  function calculatorFCL(e) {
+  async function calculatorFCL(e) {
     e.preventDefault()
     if (user === null || user === undefined) {
       router.push('/Login')
@@ -199,7 +199,20 @@ export default function Home() {
     let val = Object.values(cliente.priceFCL).filter((i) => {
       return i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value
     })
-    val !== undefined ? setCalcValueFCL(val) : setUserSuccess('NO DATA')
+    if (val !== undefined) {
+      setCalcValueFCL(val)
+    //   const res = await fetch('/FCL', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(data)
+    // })
+    // console.log(res)
+    } {
+      setUserSuccess('NO DATA')
+    }
   }
   function handlerSeeMore(key) {
     seeMore === key ? setSeeMore('') : setSeeMore(key)
@@ -601,7 +614,7 @@ export default function Home() {
 
         </div>
         {cliente.Slider1 && <div className='relative   pb-[0px] lg:pb-0  '
-    
+
 
           style={{
             backgroundColor: '#011B68',
@@ -610,7 +623,7 @@ export default function Home() {
             backgroundAttachment: 'fixed',
             backgroundSize: 'cover',
           }}
-          >
+        >
 
           <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>{languaje === 'Español' ? 'Confian En Nosotros:' : 'Trust us'}</h1>
           <Slider content={Object.values(cliente.Slider1)} />

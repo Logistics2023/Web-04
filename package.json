@@ -17,6 +17,7 @@
     "animate.css": "^4.1.1",
     "firebase": "^10.12.2",
     "free-translate": "^0.6.1",
+    "html-pdf-node": "^1.0.8",
     "html-react-parser": "^5.1.10",
     "next": "14.2.4",
     "nodemailer": "^6.9.14",
