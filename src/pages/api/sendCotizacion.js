@@ -21,15 +21,15 @@ console.log(req.body)
         await transporter.sendMail({
             from: req.body.user.email,
             to: 'info@logisticsgear.com.bo',
-            subject: ` Nueva Cotizacion: ${req.body.element}`,
-            // text: `
-            //     Nombre: ${req.body.userDB.nombre}\n
-            //     Email: ${req.body.user.email}\n
-            //     Telefono: ${req.body.userDB.telefono}\n
-            //     Pais: ${req.body.userDB.pais}\n
-            //     Empresa: ${req.body.userDB.empresa}\n
-            //     Ciudad: ${req.body.userDB.ciudad}\n
-            //     Uuid: ${req.body.userDB.uuid}`,
+            subject: ` Nueva Cotizacion: ${req.body.element} ${req.body.user.email}`,
+            text: `
+                Nombre: ${req.body.userDB.nombre}\n
+                Email: ${req.body.user.email}\n
+                Telefono: ${req.body.userDB.telefono}\n
+                Pais: ${req.body.userDB.pais}\n
+                Empresa: ${req.body.userDB.empresa}\n
+                Ciudad: ${req.body.userDB.ciudad}\n
+                Uuid: ${req.body.userDB.uuid}`,
             html: '<p></p>',
 
             attachments: [
