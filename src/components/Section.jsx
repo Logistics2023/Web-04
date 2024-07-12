@@ -113,11 +113,11 @@ function Componente2({ title, image, paragraph, id, route }) {
 
   return (
     <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
-      <div className='relative w-full h-full  md:w-auto bg-[#ffffffcb] my-5   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
-        <img src={image} className="relative max-h-[90vw] lg:w-[25vw] overflow-hidden lg:h-[25vw] block w-full object-cover rounded-t-[15px] " alt="" />
+      <div className='relative w-full h-full   bg-[#ffffffcb] my-5 md:w-[30vw]   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
+        <img src={image} className="relative max-h-[90vw] md:w-[30vw] overflow-hidden md:h-[25vw] block w-full object-cover rounded-t-[15px] " alt="" />
         <div className="relative  w-full h-full bg-gradient-to-t  from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 px-5 py-5  lg:rounded-t-[0]  rounded-b-[15px]">
           <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
-          <p className="relative text-white md:w-[20vw]">
+          <p className="relative text-white md:w-[15vw] lg:w-[20vw]">
             {`${extractContent(paragraph).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`}
           </p>
           <div className=" relative bottom-0 flex mt-5 mb-10 justify-end  w-[100%]">
@@ -138,9 +138,7 @@ export default function Section({ subtitle, subtitleEN, description, description
   const redirectHandlerWindow = (ref) => {
     window.open(ref, '_blank')
   }
-  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(subtitle)
-  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(description)
-  // subtitle === 'ASESORAMIENTO Y DESPACHOS ADUANEROS' && console.log(data)
+
   useEffect(() => {
     // const fetchData = async () => {
     //   const db = await getTranslation(description, 'es', languaje.slice(0, 2).toLowerCase())
@@ -159,7 +157,16 @@ export default function Section({ subtitle, subtitleEN, description, description
 
   return <Suspense> <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
 
-    <section className='relative w-full   bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}>
+    <section className='relative w-full   bg-gradient-to-tr from-[#00195c] via-[#384C94] to-[#00195c] overflow-x-hidden overflow-hidden' id={id}
+      style={{
+        backgroundColor: '#011B68',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23272A68'/%3E%3Cstop offset='1' stop-color='%23011B68'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23505268' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23505268' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover',
+      }}
+    >
+
+
       {/* <div className='relative px-5 py-12 w-full min-h-[50vh] flex flex-col z-30 lg:grid lg:grid-cols-2 justify-around items-center  from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '> */}
 
       <div className='relative px-5 py-12 w-full lg:px-[100px]  z-30    from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>

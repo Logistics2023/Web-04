@@ -43,7 +43,7 @@ function Responsive({ content, rtl }) {
 		<div className="slider-container">
 			<Slider {...settings} autoplay={true}>
 				{content.map((item, index) => (
-					<div className="border-b-[10px] border-double border-gray-400 border-spacing-5">
+					<div className="border-b-[3px] border-double border-yellow-500 border-spacing-5">
 						<img className='h-[50px] md:h-[100px] w-auto' src={item.url} alt="" />
 					</div>
 				))}

@@ -272,7 +272,7 @@ export default function Home() {
           <source src={cliente.inicio.url} type="video/mp4" />
         </video>
         <div className='absolute top-0  w-full min-h-[100vh] h-full object-cover z-10 bg-gradient-to-tr from-[#00195c]  via-[#cfbd7546] to-[#00195c72]    lg:bg-gradient-to-tr lg:from-[#00195cd7]  lg:via-[#cfbd7546] lg:to-[#00195c] '></div>
-      
+
         <div className='relative min-h-[100vh] h-auto   w-full lg:pt-[70px] pb-0 flex flex-col justify-around lg:flex-row items-center  z-20' style={{ background: '-gradient(to bottom, #000000,  #000000c7, #00000050' }}>
           <img src='/logo-comp.gif' className=' relative  inline-block w-[80vw] h-[80vw]    lg:w-[30vw] lg:h-[60vh]  object-cover object-center ' />
           <div className='relative  w-full lg:w-[40%] lg:bg-[#111a33d0] p-5 '>
@@ -280,6 +280,8 @@ export default function Home() {
             <div className='   font-bold'>
               {languaje === 'Español' ? <TextMaquina /> : <TextMaquina2 />}
             </div>
+
+
             <br />
             <div className='grid grid-cols-2 gap-2 w-full '>
               {/* <button onClick={write}>Click</button> */}
@@ -413,8 +415,7 @@ export default function Home() {
               {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)))}
 
               {calcValueFCL !== 'NO DATA' && console.log(calcValueFCL.filter((i) => selectValue.EQUIPO.includes(i.EQUIPO)).map((i) => i.NAVIERA))}
-              {console.log(selectValue)}
-              {console.log(calcValueFCL)}
+
 
               {calcValueFCL !== 'NO DATA' &&
                 calcValueFCL.map((item) => {
@@ -476,13 +477,19 @@ export default function Home() {
                 })
               }
             </div>
-            <a href={`tel:${cliente.contactos.telefono}`}>
-              <marquee className="text-white py-5" behavior="" direction="">
+            <marquee className="text-white py-5" behavior="" direction="">
+              <a href={`tel:${cliente.contactos.telefono}`} className='inline-block w-[100%]'>
                 {languaje === 'Español'
-                  ? 'Llamanos ya clickea aqui'
-                  : 'Call us now click here'}
-                <button className='border px-5 ml-5  rounded-full bg-[#00000070]' >{cliente.contactos.telefono}</button> </marquee>
-            </a>
+                  ? 'Llamanos clickea aqui'
+                  : 'Call us click here'}
+                <button className='border px-5 ml-5  rounded-full bg-[#00000070]' >{cliente.contactos.telefono}</button>
+              </a>
+              <span className='inline-block  w-[100%]'>
+                Trabaja con nosotros <button className='border px-5 ml-5 text-white rounded-full bg-[#00000070]' onClick={() => router.push('/Postulaciones')}>Postula aqui</button>
+              </span>
+            </marquee>
+
+
           </div>
         </div>
       </section>
@@ -593,8 +600,19 @@ export default function Home() {
           </div>
 
         </div>
-        {cliente.Slider1 && <div className='relative   pb-[100px] lg:pb-0  bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] '>
-          <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>{languaje === 'Español' ? 'Confia En Nosotros' : 'Trust us'}</h1>
+        {cliente.Slider1 && <div className='relative   pb-[100px] lg:pb-0  '
+    
+
+          style={{
+            backgroundColor: '#011B68',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23011B68'/%3E%3Cstop offset='1' stop-color='%232A3168'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='9' height='9' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%23909090' cx='4.5' cy='4.5' r='4.5'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.1'/%3E%3C/svg%3E")`,
+            // backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(12,683,325)'%3E%3Cstop offset='0' stop-color='%23011B68'/%3E%3Cstop offset='1' stop-color='%231B2E68'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='300' height='250' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.09'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E")`,
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+          }}
+          >
+
+          <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>{languaje === 'Español' ? 'Confian En Nosotros:' : 'Trust us'}</h1>
           <Slider content={Object.values(cliente.Slider1)} />
         </div>}
       </section>
@@ -636,26 +654,26 @@ export default function Home() {
         description={cliente['farmaceutico'].content} descriptionEN={cliente['farmaceutico'].contentEN}
         video={cliente['farmaceutico'].url} degrade='#00000067' tarjetas={cliente['farmaceutico'].tarjetas} miniTarjetas={cliente['farmaceutico'].miniTarjetas} id={'farmaceutico'}></Section>}
 
-      {cliente['solucionesIT'] && <Section
+      {/* {cliente['solucionesIT'] && <Section
         subtitle={cliente['solucionesIT'].titulo} subtitleEN={cliente['solucionesIT'].tituloEN}
         description={cliente['solucionesIT'].content} descriptionEN={cliente['solucionesIT'].contentEN}
-        video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}  especial={true}></Section>}
+        video={cliente['solucionesIT'].url} degrade='#00000067' tarjetas={cliente['solucionesIT'].tarjetas} miniTarjetas={cliente['solucionesIT'].miniTarjetas} id={'solucionesIT'}  especial={true}></Section>} */}
 
-      {cliente['experiencia'] && <Section
+      {/* {cliente['experiencia'] && <Section
         subtitle={cliente['experiencia'].titulo} subtitleEN={cliente['experiencia'].tituloEN}
         description={cliente['experiencia'].content} descriptionEN={cliente['experiencia'].contentEN}
-        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'} especial={true}></Section>}
+        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'} especial={true}></Section>} */}
 
-      <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195cdc] via-[#293f79d3] to-[#00195cdc]'>
+      {/* <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195cdc] via-[#293f79d3] to-[#00195cdc]'> */}
       {/* <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195c] via-[#293e79] to-[#00195c]'> */}
 
 
 
-        {cliente.Slider1 && <>
+      {/* {cliente.Slider1 && <>
           <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
           <SliderTestimonios content={Object.values(cliente.Testimonios)} />
-        </>}
-        {/* {cliente.Slider1 && <div className='relative  bg-[#384C94] '>
+        </>} */}
+      {/* {cliente.Slider1 && <div className='relative  bg-[#384C94] '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white '>Nuestros Clientes</h1>
             <Slider content={Object.values(cliente.Slider1)} />
           </div>}
@@ -670,7 +688,7 @@ export default function Home() {
             <Slider content={Object.values(cliente.Slider3)} />
           </div>} */}
 
-        {/* <div className='w-full flex flex-col justify-center items-center relative '>
+      {/* <div className='w-full flex flex-col justify-center items-center relative '>
             <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Postula y trabaja  con nosotros</h1>
             <Button theme='Primary' click={() => router.push('/Postulaciones')}>Postular</Button>
           </div> */}
@@ -678,7 +696,7 @@ export default function Home() {
 
 
 
-      </div>
+      {/* </div> */}
 
       <Footer></Footer>
 
