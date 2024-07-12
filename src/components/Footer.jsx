@@ -33,7 +33,7 @@ export default function Home() {
       
 
       {pathname === '/SolucionesIT' && cliente.Slider2 && <div className='relative  pb-[0px] lg:pb-0 '>
-        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Somos parte de:' : 'Business partners'}</h1>
+        <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>{languaje === 'Español' ? 'Somos parte de' : 'Business partners'}</h1>
         <Slider content={Object.values(cliente.Slider2)} />
       </div>}
 
