@@ -100,7 +100,7 @@ export default function BottomNavigation({ rol }) {
                             }
 
                             <div className='relative w-[60px] mr-2'>
-                                {pathname === '/' && <SelectSimple arr={['Es', 'En']} bg='bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 text-white border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje.slice(0, 2)} />}
+                                {pathname === '/' && <SelectSimple arr={['Español', 'English']} bg='bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 text-white border-white' position={'absolute left-0 md:px-1 sm:px-4'} click={handlerClickSelect} defaultValue={languaje.slice(0, 2)} />}
                             </div>
 
                             <button type="button" className="  relative flex items-center  w-[40px] h-[40px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 z-50" onClick={openNav}>
