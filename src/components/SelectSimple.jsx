@@ -32,7 +32,7 @@ export default function Select({ arr, name, click, defaultValue, uuid, label, po
                     <ul
                         className={` ${position ? position : 'relative'}  ${bg ? 'bg-gray-100' : 'bg-transparent'} mt-3  transition-all rounded-[5px]  w-full  ${select === name ? ` ${arr.length >= 2 && 'h-[65px] border-t z-10  overflow-auto '} ${arr.length == 2 && 'h-[20px] border-t overflow-hidden  z-10'} ${arr.length == 1 && 'h-[36px] border-t overflow-hidden  z-10'}  ` : 'h-[0] overflow-hidden'}`}  >
                         {
-                            arr.map((i, index) => <li key={index} className='flex items-center  border-b cursor-pointer p-2' onClick={() => handlerUserState(name, i)}> {i} </li>)
+                            arr.map((i, index) => <li key={index} className='flex items-center text-black border-b cursor-pointer p-2' onClick={() => handlerUserState(name, i)}> {i} </li>)
                         }
                     </ul>
                 </div>

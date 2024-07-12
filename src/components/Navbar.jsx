@@ -98,11 +98,18 @@ export default function BottomNavigation({ rol }) {
                                     : <button className=' relative h-[35px] z-50 bg-[#F7BE38]  mr-5 p-2 px-5 rounded-[5px] border lg:hidden' onClick={() => router.push('/Login')}>Iniciar Sesión</button>
                                 )
                             }
+
+                            <div className='relative w-[60px] mr-2'>
+                                {pathname === '/' && <SelectSimple arr={['Es', 'En']} bg='bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 text-white border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje.slice(0, 2)} />}
+                            </div>
+
                             <button type="button" className="  relative flex items-center  w-[40px] h-[40px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 z-50" onClick={openNav}>
                                 <svg className="w-12 h-12 p-2 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 17 14">
                                     <path stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                                 </svg>
                             </button>
+
+
                         </div>
                     }
 
