@@ -265,20 +265,20 @@ export default function Home() {
         <div id='FCL'></div>
       </div>
 
-    
- 
 
 
 
 
-     
+
+
+
       {cliente['experiencia'] && <Section
         subtitle={cliente['experiencia'].titulo} subtitleEN={cliente['experiencia'].tituloEN}
         description={cliente['experiencia'].content} descriptionEN={cliente['experiencia'].contentEN}
-        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'experiencia'} especial={true}></Section>}
+        video={cliente['experiencia'].url} degrade='#00000067' tarjetas={cliente['experiencia'].tarjetas} miniTarjetas={cliente['experiencia'].miniTarjetas} id={'testimonios'} especial={true}></Section>}
 
       <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195cdc] via-[#293f79d3] to-[#00195cdc]'>
-      {/* <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195c] via-[#293e79] to-[#00195c]'> */}
+        {/* <div className='relative  h-[100vh] md:h-[80vh] bg-gradient-to-t py-[20vh] md:py-[10vh] from-[#00195c] via-[#293e79] to-[#00195c]'> */}
 
 
 
@@ -286,7 +286,7 @@ export default function Home() {
           <h1 className='text-center font-bold text-[25px] py-[50px] text-white'>Testimonios</h1>
           <SliderTestimonios content={Object.values(cliente.Testimonios)} />
         </>}
-       
+
 
 
 

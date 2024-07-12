@@ -95,7 +95,7 @@ export default function Home() {
     window.open(`https://api.whatsapp.com/send?phone=+59169941749&text=${whatsappMessage}`, '_blank')
 
   }
-  async function HandlerCheckOut2(e) {
+  async function HandlerCheckOut2() {
     const db = Object.entries({ ORIGEN: inputRef.current.value, DESTINO: inputRef2.current.value, ...selectValue }).reverse().reduce((acc, i, index) => {
       const data = `${i[0]}: ${i[1]}\n`
       return data + '\r\n' + acc
@@ -179,37 +179,50 @@ export default function Home() {
   }
   function calculator(e) {
     e.preventDefault()
+
     if (user === null || user === undefined) {
       router.push('/Login')
       return
     }
+    preValidate() ? handlerElement('FTL') : HandlerCheckOut2()
 
     let val = Object.values(cliente.priceFTL).find((i) => {
       return i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value && i.MERCANCIA === selectValue.MERCANCIA && i['PESO (KG)'] >= selectValue['PESO (KG)'] && i.SERVICIO === selectValue.SERVICIO && i['TIPO DE UNIDAD'] === selectValue['TIPO DE UNIDAD'] && i['VOLUMEN M3'] >= selectValue['VOLUMEN M3']
     })
     val !== undefined ? setCalcValue({ ...val, ['PESO (KG)']: selectValue['PESO (KG)'], ['VOLUMEN M3']: selectValue['VOLUMEN M3'], TOTAL: val['SERVICIOS LOGISTICOS USD'] * 1 + val['FLETE USD'] * 1 }) : setUserSuccess('NO DATA')
+
+
+
+
   }
-  async function calculatorFCL(e) {
+  function calculatorFCL(e) {
     e.preventDefault()
     if (user === null || user === undefined) {
       router.push('/Login')
       return
     }
+console.log('click')
+    inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0
+      ? handlerElement('FCL')
+      : HandlerCheckOut2()
+
+
+
 
     let val = Object.values(cliente.priceFCL).filter((i) => {
       return i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value
     })
     if (val !== undefined) {
       setCalcValueFCL(val)
-    //   const res = await fetch('/FCL', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // })
-    // console.log(res)
+      //   const res = await fetch('/FCL', {
+      //     method: 'POST',
+      //     headers: {
+      //         'Accept': 'application/json',
+      //         'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(data)
+      // })
+      // console.log(res)
     } {
       setUserSuccess('NO DATA')
     }
@@ -329,7 +342,7 @@ export default function Home() {
                 </ul>
                 : <div className='w-full text-center bg-blue-700 text-white p-2'>  {languaje === 'Español' ? 'COTIZACIÓN' : 'PRICE'} {element}  </div>
               }
-              {(hash !== '#FCL' && hash !== '#FTL') && <form className="max-w-md w-full flex  mx-auto pt-5">
+              {(hash !== '#FCL' && hash !== '#FTL') && <form className="max-w-md w-full flex  mx-auto pt-5" onSubmit={filterTracking}>
                 <div className="flex w-full ">
                   <label htmlFor="location-search" className="mb-2 text-[12px] font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                   <div className="relative w-full">
@@ -350,8 +363,8 @@ export default function Home() {
                   <InputEspecial type='text' data={inputRef.current ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value) : Object.values(cliente.priceFTL)} node={'Destino'} focusTxt='DESTINO-FTL' id='floating_2' inputRef={inputRef2} select={handlerSelect2} style={{ textTransform: 'uppercase' }}></InputEspecial>
                   <SelectSimple arr={inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0 ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) : equipoDB} name='EQUIPO' click={handlerClickSelect} defaultValue={selectValue['EQUIPO'] ? selectValue['EQUIPO'] : 'Seleccionar'} uuid='8768798' label='Equipo' required={true}></SelectSimple>
                   {inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0
-                    ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={() => handlerElement('FCL')} >Cotizar</button>
-                    : <button type="button" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500    " onClick={HandlerCheckOut2}> Solicitar Cotizacion</button>
+                    ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2"  >Cotizar</button>
+                    : <button type="submit" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500    "> Solicitar Cotizacion</button>
                   }
                 </form>}
               {((hash === '#FTL') && calcValue === 'NO DATA' && calcValueFCL === 'NO DATA') &&
@@ -373,8 +386,8 @@ export default function Home() {
                     </div>}
                   </div>
                   {preValidate()
-                    ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" onClick={() => handlerElement('FTL')}>Cotizar</button>
-                    : <button type="submit" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500     " onClick={HandlerCheckOut2}>Solicitar Cotizacion</button>
+                    ? <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2" >Cotizar</button>
+                    : <button type="submit" className=" focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px] w-full  px-5 py-2.5 text-center  mt-7 lg:col-span-2          text-white bg-green-500     " >Solicitar Cotizacion</button>
                   }
                 </form>
               }
