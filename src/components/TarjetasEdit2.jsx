@@ -23,6 +23,9 @@ export default function Home() {
     function onChangeHandler4(e, i) {
         setData3({ ...data3, [i]: { ...data3[i], paragraph: e } })
     }
+    function onChangeHandler5(e, i) {
+        setData3({ ...data3, [i]: { ...data3[i], paragraphEN: e } })
+    }
     function saveFrontPage2(e) {
         e.preventDefault()
         setUserSuccess('Cargando')
@@ -101,8 +104,11 @@ export default function Home() {
                         </div>
                         < InputFlotante type="text" name={`url`} id={`floating_5`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['url'] ? data3[i[0]]['url'] : i[1][`url`]} required label={'IMG url'} shadow='shadow-white' />
                         < InputFlotante type="text" name={`title`} id={`floating_6`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['title'] ? data3[i[0]]['title'] : i[1][`title`]} required label={'Titulo'} shadow='shadow-white' />
+                        < InputFlotante type="text" name={`titleEN`} id={`floating_6`} onChange={(e) => onChangeHandler3(e, i[0])} value={data3[i[0]] && data3[i[0]]['titleEN'] ? data3[i[0]]['titleEN'] : i[1][`titleEN`]} required label={'Titulo Ingles'} shadow='shadow-white' />
                         <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Descripción</label>
                         <TextEditorSimple value={i[1][`paragraph`]} setValue={(e) => onChangeHandler4(e, i[0])} edit={true} ></TextEditorSimple>
+                        <label htmlFor="first-name" className="block text-[12px] font-medium leading-6 text-gray-900">Descripción (Ingles)</label>
+                        <TextEditorSimple value={i[1][`paragraphEN`]} setValue={(e) => onChangeHandler5(e, i[0])} edit={true} ></TextEditorSimple>
                         <br />
                         <div className='flex justify-center'>
                             <Button type="button" theme="Danger" click={(e) => deleteHandler(e, `Cliente/${query}/tarjetas/${i[0]}`, i[0], setData3)}>Eliminar</Button>

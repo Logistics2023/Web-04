@@ -60,6 +60,8 @@ export default function Home() {
                     <h4 className='col-span-2  text-base font-bold leading-7 text-gray-900  text-center p-5'>MINI TARJETA</h4>
                     < InputFlotante type="text" name={`ip`} id={`floating_1`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ip'] ? data2[i[0]]['ip'] : i[1][`ip`]} required label={'Item principal'} shadow='shadow-white' />
                     < InputFlotante type="text" name={`ic`} id={`floating_2`} onChange={(e) => onChangeHandler2(e, i[0])} value={data2[i[0]] && data2[i[0]]['ic'] ? data2[i[0]]['ic'] : i[1][`ic`]} required label={'Item contenido'} shadow='shadow-white' />
+                    
+                    
                     <div className="col-span-2 mt-6 flex items-center justify-center gap-x-6">
                         <Button type="button" theme="Danger" click={(e) => deleteHandler(e, `Cliente/${query}/miniTarjetas/${i[0]}`, i[0])}>Eliminar</Button>
                         <Button type="submit" theme="Primary">Guardar</Button>
