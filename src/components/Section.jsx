@@ -48,6 +48,9 @@ function extractContent(html) {
 function Componente({ title, image, paragraph, id, route }) {
   const { cliente, languaje } = useUser()
 
+  function redirect(data){
+    window.open(`https://api.whatsapp.com/send?phone=${cliente.contactos.celular.replaceAll(' ', '')}&text=hola%20Logistics%20Gear%20me%20gustaria%20solicitar%20el%20servicio%20de:%20${data.replaceAll(' ', '%20')}`, )
+  }
   const router = useRouter()
   // console.log(paragraph)
   return (
@@ -61,7 +64,7 @@ function Componente({ title, image, paragraph, id, route }) {
           </p>
           <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
             <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
-         cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Contenedores/Detalles?query=${id}&item=${route}`)}>Saber mas</button>
+         cursor-pointer rounded-[5px]"  onClick={() => redirect(title)}>Solicitar servicio</button>
           </div>
         </div>
       </div>
