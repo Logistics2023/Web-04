@@ -22,7 +22,7 @@ import { arrDB } from '@/db/arrDB'
 
 
 function Pages() {
-    const { user, introVideo, userDB, setUserProfile, setUserSuccess, nav, navItem, setuserDB, focus, setFocus, seeMore, setSeeMore } = useUser()
+    const { user, introVideo, languaje, userDB, setUserProfile, setUserSuccess, nav, navItem, setuserDB, focus, setFocus, seeMore, setSeeMore } = useUser()
 
 
     const [query, setQuery] = useState('')
@@ -41,31 +41,31 @@ function Pages() {
 
         <div className="relative  py-[25px] max-w-[960px] w-[95vw] bg-white lg:p-[20px]  shadow-[0 4px 8px rgba(0,0,0,0.1)]">
             {db ? <form className="relative  pt-5 sm:col-span-3 mb-5 pb-5 border-b-[.5px] "  >
-                <h5 className='text-center font-medium text-[16px]'>Informacion de Carga<br /> </h5>
+                <h5 className='text-center font-medium text-[16px]'>{languaje === 'Español' ? 'Informacion de Carga' : 'Information'}<br /> </h5>
 
                 <div className='relative p-5 my-5 bg-white space-y-5 shadow-2xl '>
 
-                    <h5 className='relative font-medium text-[16px]'>DETALLE DEL SERVICIO <br /> </h5>
+                    <h5 className='relative font-medium text-[16px]'>{languaje === 'Español' ? 'DETALLE DEL SERVICIO' : 'SERVICE DETAILS'} <br /> </h5>
                     <div className='relative flex  '>
                         {arrDB.map((i, index) => <div key={index} className='w-full  relative flex flex-col items-center m-2 cursor-pointer p-2' >
                             <span className={`absolute z-10  top-[-5px] left-0 right-0 mx-auto border-[2px] border-[#294B98] rounded-full  w-[10px] h-[10px] ${db.trackIcon && i.img === db.trackIcon['img'] ? 'bg-[#39ff27]' : 'bg-white '}`}></span>
                             <img src={i.img} className={` inline h-[20px] sm:h-[25px] md:h-[50px]  ${db.trackIcon && i.img === db.trackIcon['img'] ? 'grayscale-0 brightness-125' : 'grayscale '}`} alt="" />
-                            <span className={`h-[10px] text-[8px] sm:text-[12px] ${db.trackIcon && i.img === db.trackIcon['img'] ? 'text-[#294B98] font-medium' : ' font-medium'}`}>{i.text}</span>
+                            <span className={`h-[10px] text-[8px] sm:text-[12px] ${db.trackIcon && i.img === db.trackIcon['img'] ? 'text-[#294B98] font-medium' : ' font-medium'}`}>{languaje === 'Español' ? i.text : i.textEN}</span>
                         </div>)}
                         <span className='absolute top-[5px] h-[2px] bg-[#294B98] w-full'></span>
                     </div>
                     <table className='w-full mt-[20px] border-collapse	table-fixed'>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                FECHA DE CREACION
+                                {languaje === 'Español' ? 'FECHA DE CREACION' : 'CREATION DATE'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
-                                {db['FECHA DE CREACION'].split('-').reverse().toString().replaceAll(',','-')}
+                                {db['FECHA DE CREACION'].split('-').reverse().toString().replaceAll(',', '-')}
                             </td>
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                CODIGO DE SERVICIO
+                                {languaje === 'Español' ? 'CODIGO DE SERVICIO' : 'SERVICE CODE'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['CODIGO DE SERVICIO']}
@@ -73,7 +73,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                CODIGO DE CLIENTE
+                                {languaje === 'Español' ? 'CODIGO DE CLIENTE' : 'CLIENT CODE'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['CODIGO DE CLIENTE']}
@@ -81,7 +81,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                MODALIDAD DE TRANSPORTE
+                                {languaje === 'Español' ? 'MODALIDAD DE TRANSPORTE' : 'MODALITY OF TRANSPORTATION'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['MODALIDAD DE TRANSPORTE']}
@@ -89,7 +89,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                ORIGEN
+                                {languaje === 'Español' ? 'ORIGEN' : 'ORIGIN'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['ORIGEN']}
@@ -97,7 +97,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                DESTINO
+                                {languaje === 'Español' ? 'DESTINO' : 'DESTINATION'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['DESTINO']}
@@ -105,7 +105,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                MERCANCIA
+                                {languaje === 'Español' ? 'MERCANCIA' : 'COMMODITY'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['MERCANCIA']}
@@ -113,7 +113,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                PESO TN
+                                {languaje === 'Español' ? 'PESO TN' : 'WEIGHT TN'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['PESO TN']}
@@ -121,7 +121,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                SHIPPER
+                                {languaje === 'Español' ? 'SHIPPER' : 'SHIPPER'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['SHIPPER']}
@@ -129,7 +129,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                CONSIGNATARIO
+                                {languaje === 'Español' ? 'CONSIGNATARIO' : 'CONSIGNEE'}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['CONSIGNATARIO']}
@@ -137,7 +137,7 @@ function Pages() {
                         </tr>
                         <tr>
                             <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                MANIFIESTO
+                                {languaje === 'Español' ? 'MANIFIESTO' : ''}
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
                                 {db['MANIFIESTO']}
@@ -148,7 +148,7 @@ function Pages() {
                                 ETD
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
-                                {db['ETD'].split('-').reverse().toString().replaceAll(',','-')}
+                                {db['ETD'].split('-').reverse().toString().replaceAll(',', '-')}
                             </td>
                         </tr>
                         <tr>
@@ -156,11 +156,11 @@ function Pages() {
                                 ETA
                             </th>
                             <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
-                                {db['ETA'].split('-').reverse().toString().replaceAll(',','-')}
+                                {db['ETA'].split('-').reverse().toString().replaceAll(',', '-')}
                             </td>
                         </tr>
                     </table>
-                    {db && db.subItems &&<h5 className=' font-medium text-[16px]'>STATUS <br /> </h5>}
+                    {db && db.subItems && <h5 className=' font-medium text-[16px]'>STATUS <br /> </h5>}
 
 
                     <table className='w-full mt-[20px] border-collapse	table-fixed'>
@@ -169,10 +169,10 @@ function Pages() {
                         {db && db.subItems && Object.values(db.subItems).map((item, index) => {
                             return <tr>
                                 <th className=' border-[1px]  border-[#ccc] p-[8px] text-left font-bold bg-[#f9f9f9]' >
-                                    {item[`ip`]}
+                                    {languaje === 'English' && item[`ipEN`] ? item[`ipEN`] : item[`ip`]}
                                 </th>
                                 <td className=' border-[1px]  border-[#ccc] p-[8px] text-left break-words'>
-                                    {item[`ic`]}
+                                    {languaje === 'English' && item[`icEN`] ? item[`icEN`] : item[`ic`]}
                                 </td>
                             </tr>
                         })
@@ -189,7 +189,7 @@ function Pages() {
                         </div> */}
                 </div>
             </form> :
-                <div> DATOS INEXISTENTES</div>
+                <div>{languaje === 'Español' ? 'DATOS INEXISTENTES' : 'NO DATA'}</div>
             }
 
 

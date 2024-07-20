@@ -1,23 +1,28 @@
 const arrDB = [
     {
         img: '/Iconos Tracking/Origen.png',
-        text: 'ORIGEN'
+        text: 'ORIGEN',
+        textEN: 'ORIGIN'
     }, 
     {
         img: '/Iconos Tracking/aduana de origen.png',
-        text: 'ADUANA EXPORTACION'
+        text: 'ADUANA EXPORTACION',
+        textEN: 'CUSTOMS EXPORT'
     },
     {
         img: '/Iconos Tracking/transito.png',
-        text: 'TRANSITO'
+        text: 'TRANSITO',
+        textEN: 'TRANSIT'
     },
     {
         img: '/Iconos Tracking/aduana de destino.png',
-        text: 'ADUANA  IMPORTACION'
+        text: 'ADUANA  IMPORTACION',
+        textEN: 'CUSTOMS IMPORT'
     },
     {
         img: '/Iconos Tracking/destino.png',
-        text: 'DESTINO'
+        text: 'DESTINO',
+        textEN: 'DESTINATION'
     },
 ]
 

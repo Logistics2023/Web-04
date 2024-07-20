@@ -16,6 +16,7 @@ import parse from 'html-react-parser';
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.core.css';
+import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 
 
 function Componente({ route, db, id, title, image, paragraph, titleEN, paragraphEN }) {
@@ -24,22 +25,26 @@ function Componente({ route, db, id, title, image, paragraph, titleEN, paragraph
   const router = useRouter()
   return <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 flex flex-col justify-between lg:items-center rounded-[15px] '>
     <img src={image} className="relative  min-h-[40%] w-auto object-contain p-5" alt="" />
-    <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px]   
+    <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+
+      <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px]   
     rounded-t-[0]  rounded-b-[15px]">
-      <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
-      <p className="relative text-white  ql-editor "
-      //  dangerouslySetInnerHTML={{ __html: paragraph }} 
-      >
-        {languaje === 'English' && paragraphEN
-          ? paragraphEN !== undefined && parse(paragraphEN)
-          : paragraph !== undefined && parse(paragraph)
-        }
-      </p>
-      <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
-        <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
+        <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
+        <p className="relative text-white  ql-editor "
+        //  dangerouslySetInnerHTML={{ __html: paragraph }} 
+        >
+          {languaje === 'English' && paragraphEN
+            ? paragraphEN !== undefined && parse(paragraphEN)
+            : paragraph !== undefined && parse(paragraph)
+          }
+        </p>
+        <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
+          <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
        cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Contenedores/Detalles?query=${id}&item=${route}`)}>Saber mas</button>
+        </div>
       </div>
-    </div>
+    </Translator>
+
   </div>
 }
 function Item({ e1, e2, e1EN, e2EN }) {
@@ -53,10 +58,14 @@ function Item({ e1, e2, e1EN, e2EN }) {
 
     }}
     initiallyVisible={true}>
-    <div className='flex flex-col justify-center items-center'>
-      <span className='text-[20px] md:text-[23px] font-medium'>{languaje === 'English' && e1EN ? e1EN : e1}</span>
-      <span className='text-center'>{languaje === 'English' && e2EN ? e2EN : e2}</span>
-    </div>
+    <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+
+      <div className='flex flex-col justify-center items-center'>
+        <span className='text-[20px] md:text-[23px] font-medium'>{languaje === 'English' && e1EN ? e1EN : e1}</span>
+        <span className='text-center'>{languaje === 'English' && e2EN ? e2EN : e2}</span>
+      </div>
+    </Translator>
+
   </ScrollAnimation>
 }
 
@@ -74,6 +83,8 @@ function Section({ subtitle, description, video, tarjetas, id, descriptionEN, su
           animateOut='bounceOutLeft'
           initiallyVisible={true}
         >
+                      <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>
+
           <p className=' text-[16px] text-[white] pb-5  ql-editor'
           // dangerouslySetInnerHTML={{
           //   __html: languaje === 'English' && descriptionEN
@@ -88,6 +99,8 @@ function Section({ subtitle, description, video, tarjetas, id, descriptionEN, su
               : description !== undefined && parse(description)
             }
           </p>
+          </Translator>
+
         </ScrollAnimation>
       </div>
 

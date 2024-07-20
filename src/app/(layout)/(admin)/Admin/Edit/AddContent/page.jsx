@@ -133,18 +133,37 @@ export default function Home() {
                             <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subir Video por URL</label>
                             <input type="text" name="urlIMG" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route].urlIMG} />
                         </div>
+
+
                         <div className="sm:col-span-3">
                             <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo</label>
                             <input type="text" name="title" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route].title} />
                         </div>
                         <div className="sm:col-span-3">
+                            <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Titulo Ingles</label>
+                            <input type="text" name="tituloEN" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route].tituloEN} />
+                        </div>
+
+
+                        <div className="sm:col-span-3">
                             <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subtitulo 1</label>
                             <input type="text" name="subtitle 1" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route]['subtitle 1']} />
                         </div>
                         <div className="sm:col-span-3">
+                            <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subtitulo 1 Ingles</label>
+                            <input type="text" name="subtitle 1EN" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route]['subtitle 1EN']} />
+                        </div>
+
+
+                        <div className="sm:col-span-3">
                             <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subtitulo 2</label>
                             <input type="text" name="subtitle 2" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route]['subtitle 2']} />
                         </div>
+                        <div className="sm:col-span-3">
+                            <label htmlFor="last-name" className="block text-[12px] font-medium leading-6 text-gray-900">Subtitulo 2 Ingles</label>
+                            <input type="text" name="subtitle 2EN" onChange={onChangeHandler} className="block w-full rounded-md border-0 p-1.5 mt-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-[12px] sm:leading-6" defaultValue={cliente && cliente[query] && cliente[query].tarjetas[route]['subtitle 2EN']} />
+                        </div>
+
                         <div className="mt-6 flex items-center justify-center gap-x-6">
                             <Button type="submit" theme="Primary">Guardar</Button>
                         </div>
@@ -166,6 +185,9 @@ export default function Home() {
                             return <div className="space-y-5 md:space-y-0 md:grid md:grid-cols-2  md:gap-2 pb-5 border-b-[.5px] mb-5 border-[#666666]">
                                 < InputFlotante type="text" name={`ip`} uid={`key_${index}`} onChange={(e) => onChangeHandler2(e, index)} value={data2[`item${index}`][`ip`]} required label={'Item principal'} shadow='shadow-white' />
                                 < InputFlotante type="text" name={`ic`} uid={`value_${index}`} onChange={(e) => onChangeHandler2(e, index)} value={data2[`item${index}`][`ic`]} required label={'Item contenido'} shadow='shadow-white' />
+                               
+                                < InputFlotante type="text" name={`ipEN`} uid={`keyEN_${index}`} onChange={(e) => onChangeHandler2(e, index)} value={data2[`item${index}`][`ipEN`]}  label={'Item principal ingles'} shadow='shadow-white' />
+                                < InputFlotante type="text" name={`icEN`} uid={`valueEN_${index}`} onChange={(e) => onChangeHandler2(e, index)} value={data2[`item${index}`][`icEN`]}  label={'Item contenido ingles'} shadow='shadow-white' />
                             </div>
                         })
                         }

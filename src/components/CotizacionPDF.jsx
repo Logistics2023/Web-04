@@ -266,19 +266,19 @@ const PDFView = ({ click }) => {
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'FLETE' : 'FREIGHT'}</Text>
                                                 </View>}
                                                 {item.flete && Object.entries(item.flete).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ? i[1].ipEN : i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos origen'] && <View style={styles.box}>
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'ORIGIN SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ? i[1].ipEN : i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos destino'] && <View style={styles.box}>
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS DESTINO' : 'DESTINATION SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ? i[1].ipEN : i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
 
 
@@ -313,7 +313,10 @@ const PDFView = ({ click }) => {
 
                                                 <View style={{ ...styles.content, marginTop: '15px' }}>
                                                     <Text style={{ width: '50%' }}></Text>
-                                                    <Text style={{ width: '50%', backgroundColor: 'yellow', padding: '3px', textAlign: 'right', fontFamily: 'Inter', fontWeight: 'medium' }}>Fecha maxima de vigencia de cotizacion: {item.VALIDEZ && item.VALIDEZ !== undefined && item.VALIDEZ.split('-').reverse().map((e) => e + '/')}</Text>
+                                                    <Text style={{ width: '50%', backgroundColor: 'yellow', padding: '3px', textAlign: 'right', fontFamily: 'Inter', fontWeight: 'medium' }}>
+                                                        {languaje === 'Español'
+                                                            ? 'Fecha maxima de vigencia de cotizacion'
+                                                            : 'Maximum quote validity date:'} {item.VALIDEZ && item.VALIDEZ !== undefined && item.VALIDEZ.split('-').reverse().map((e) => e + '/')}</Text>
                                                 </View>
                                             </>
 
@@ -332,7 +335,9 @@ const PDFView = ({ click }) => {
                                 </Text>
 
                                 <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
-                                    {cliente.notaFTL}
+                                    {languaje === 'English' && cliente.notaFCLEN
+                                        ? cliente.notaFTLEN
+                                        : cliente.notaFTL}
                                     {/* Por favor tenga en cuenta que las tarifas proporcionadas en esta cotización son estimaciones preliminares y están sujetas a variaciones en caso de cambios en las dimensiones o el peso de la carga. Además, estas tarifas son válidas únicamente para carga general. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para carga que requiera condiciones especiales o exceda las dimensiones o pesos estándares, es necesario que se ponga en contacto con nosotros para ajustar la cotización a sus necesidades específicas. */}
                                     <Br /><Br />
 
@@ -353,7 +358,9 @@ const PDFView = ({ click }) => {
                                 <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
                                     <Br /> <Br />
                                     <Br /> <Br />
-                                    {cliente.notaFCL}
+                                    {languaje === 'English' && cliente.notaFCLEN
+                                        ? cliente.notaFCLEN
+                                        : cliente.notaFCL}
                                     {/* Las tarifas generadas automáticamente por este cotizador están sujetas a la confirmación de espacio por las navieras y aplican exclusivamente para carga general no peligrosa ni sobredimensionada. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para cargas clasificadas como IMO o que excedan las dimensiones estándar, les solicitamos contactar directamente a través de nuestros siguientes canales para obtener una cotización adecuada a sus necesidades específicas: */}
                                     <Br /><Br />
                                     {languaje === 'Español'

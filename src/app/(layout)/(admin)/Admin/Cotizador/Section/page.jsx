@@ -41,13 +41,17 @@ export default function Home() {
     }
     function handlerClickSelect(name, i, uuid) {
         setData({ ...data, [uuid]: { ...data[uuid], [name.replaceAll(uuid, '')]: i } })
-      }
+    }
     function saveNota(e, key) {
         e.preventDefault()
         console.log(e.target[0].value)
         if (e.target[0].value) {
             setUserSuccess('Cargando')
-            writeUserData(`Cliente/`, {[`nota${query}`]:e.target[0].value}, setUserSuccess)
+            writeUserData(`Cliente/`, { [`nota${query}`]: e.target[0].value }, setUserSuccess)
+        }
+        if (e.target[1].value) {
+            setUserSuccess('Cargando')
+            writeUserData(`Cliente/`, { [`nota${query}EN`]: e.target[1].value }, setUserSuccess)
         }
     }
     function getDB() {
@@ -128,6 +132,7 @@ export default function Home() {
                     </div> */}
                     {(query === 'FTL') && <form action="" className='flex items-center p-2' onSubmit={saveNota}>
                         <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' defaultValue={cliente.notaFTL} placeholder='Nota de impresion' />
+                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' defaultValue={cliente.notaFTLEN} placeholder='Nota de impresion' />
                         <Button theme="Success" >Guardar</Button>
                     </form>}
 
@@ -217,9 +222,11 @@ export default function Home() {
                         </tbody>
                     </table>}
                     {(query === 'FCL') && <form action="" className='flex items-center p-2' onSubmit={saveNota}>
-                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize-x focus:outline-none' defaultValue={cliente.notaFCL}  placeholder='Nota de impresion' />
+                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize focus:outline-none' defaultValue={cliente.notaFCL} placeholder='Nota de impresion' />
+                        <textarea type="text" rows='1' className='rounded-xl mr-5 p-5 min-w-[200px] border shadow-2xl resize focus:outline-none' defaultValue={cliente.notaFCLEN} placeholder='Nota de impresion ingles' />
                         <Button theme="Success" >Guardar</Button>
                     </form>}
+
 
                     {(query === 'FCL') && <table className="relative text-[12px] w-[2000px] text-left  text-gray-500 ">
                         <thead className="realative top-0 text-xs text-gray-700 uppercase    ">
@@ -268,7 +275,7 @@ export default function Home() {
                                     </td>
                                     <td className="px-3 py-4 w-[200px]">
                                         {/* < InputFlotante type="text" id={`floating_4`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} required table label={'EQUIPO'} shadow='shadow-white' /> */}
-                                        <SelectSimple arr={equipoDB} name={'EQUIPO'+i[0]} click={handlerClickSelect} defaultValue={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} uuid={i[0]} diferent={true} label='Equipo' required={true}></SelectSimple>
+                                        <SelectSimple arr={equipoDB} name={'EQUIPO' + i[0]} click={handlerClickSelect} defaultValue={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} uuid={i[0]} diferent={true} label='Equipo' required={true}></SelectSimple>
                                     </td>
                                     <td className="px-6 py-4">
                                         < InputFlotante type="text" id={`floating_3`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['TT'] !== undefined ? data[i[0]]['TT'] : i[1]['TT']} required table label={'TT'} shadow='shadow-white' />
