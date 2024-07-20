@@ -45,11 +45,11 @@ function extractContent(html) {
     .documentElement.textContent;
 }
 
-function Componente({ title, image, paragraph, id, route }) {
+function Componente({ title, image, paragraph, id, route, titleEN, paragraphEN }) {
   const { cliente, languaje } = useUser()
 
-  function redirect(data){
-    window.open(`https://api.whatsapp.com/send?phone=${cliente.contactos.celular.replaceAll(' ', '')}&text=hola%20Logistics%20Gear%20me%20gustaria%20solicitar%20el%20servicio%20de:%20${data.replaceAll(' ', '%20')}`, )
+  function redirect(data) {
+    window.open(`https://api.whatsapp.com/send?phone=${cliente.contactos.celular.replaceAll(' ', '')}&text=hola%20Logistics%20Gear%20me%20gustaria%20solicitar%20el%20servicio%20de:%20${data.replaceAll(' ', '%20')}`,)
   }
   const router = useRouter()
   // console.log(paragraph)
@@ -58,9 +58,12 @@ function Componente({ title, image, paragraph, id, route }) {
       <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 lg:flex lg:flex-col lg:justify-between lg:items-center rounded-[15px] '>
         <img src={image} className="relative w-[150px] md:min-h-[40%] lg:max-w-[200px] object-contain p-5" alt="" />
         <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px] lg:rounded-t-[0]  lg:rounded-b-[15px]">
-          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
+          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
           <p className="relative text-white "  >
-            {paragraph !== undefined && parse(paragraph)}
+            {languaje === 'English' && paragraphEN
+              ? paragraphEN !== undefined && parse(paragraphEN)
+              : paragraph !== undefined && parse(paragraph)
+            }
           </p>
           <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
             <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
@@ -72,7 +75,7 @@ function Componente({ title, image, paragraph, id, route }) {
 
 }
 
-function Componente3({ title, image, paragraph, id, route, hash }) {
+function Componente3({ title, image, paragraph, id, route, hash, titleEN, paragraphEN }) {
   const { cliente, languaje } = useUser()
 
   const router = useRouter()
@@ -82,15 +85,18 @@ function Componente3({ title, image, paragraph, id, route, hash }) {
       <div className='relative w-full min-h-full md:w-auto bg-[#ffffffcb] my-5 flex  lg:max-w-[500px] lg:min-w-[250px]  lg:text-[18px] lg:mx-5 lg:flex lg:flex-col lg:justify-between lg:items-center rounded-[15px] '>
         <img src={image} className="relative w-[150px] md:min-h-[40%] lg:max-w-[200px] object-contain p-5" alt="" />
         <div className="relative w-full bg-gradient-to-t md:min-h-[45%] from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 p-5 py-5 rounded-r-[15px] lg:rounded-t-[0]  lg:rounded-b-[15px]">
-          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
+          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
           <p className="relative text-white "  >
-            {paragraph !== undefined && parse(paragraph)}
+            {languaje === 'English' && paragraphEN
+              ? paragraphEN !== undefined && parse(paragraphEN)
+              : paragraph !== undefined && parse(paragraph)
+            }
           </p>
           {console.log(hash)}
           <div className=" relative flex mt-5 mb-10 justify-end w-[100%]">
             <a href={hash}>
               <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
-         cursor-pointer rounded-[5px]">Ir a Herramienta</button>
+         cursor-pointer rounded-[5px]">{languaje === 'English' ? 'Ir a Herramienta' : 'Go to Tool'}</button>
             </a>
 
           </div>
@@ -100,7 +106,7 @@ function Componente3({ title, image, paragraph, id, route, hash }) {
 
 }
 
-function Componente2({ title, image, paragraph, id, route }) {
+function Componente2({ title, image, paragraph, id, route, titleEN, paragraphEN }) {
   const { cliente, languaje } = useUser()
 
   const router = useRouter()
@@ -119,13 +125,15 @@ function Componente2({ title, image, paragraph, id, route }) {
       <div className='relative w-full h-full   bg-[#ffffffcb] my-5 md:w-[30vw]   lg:text-[18px] lg:mx-5 rounded-[15px] overflow-hidden'>
         <img src={image} className="relative max-h-[90vw] md:w-[30vw] overflow-hidden md:h-[25vw] block w-full object-cover rounded-t-[15px] " alt="" />
         <div className="relative  w-full h-full bg-gradient-to-t  from-[#00195cbe] via-[#00195cbe] to-[#00195c] space-y-5 px-5 py-5  lg:rounded-t-[0]  rounded-b-[15px]">
-          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{title}</h4>
+          <h4 className="w-full text-left font-medium border-b-[3px] text-white pb-5 pl-0 ml-0 border-[#ffffff] p-5">{languaje === 'English' && titleEN ? titleEN : title}</h4>
           <p className="relative text-white md:w-[15vw] lg:w-[20vw]">
-            {`${extractContent(paragraph).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`}
+            {languaje === 'English' && paragraphEN
+              ? `${extractContent(paragraphEN).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`
+              : `${extractContent(paragraph).split(' ').slice(0, 10).toString().replaceAll(',', ' ')}...`}
           </p>
           <div className=" relative bottom-0 flex mt-5 mb-10 justify-end  w-[100%]">
             <button className="block bg-[#ffb834] px-3 text-[12px] border text-center font-medium py-2 m-1  
-         cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Galeria?query=${id}&item=${route}`)}>Saber mas</button>
+         cursor-pointer rounded-[5px]"  onClick={() => router.push(`/Galeria?query=${id}&item=${route}`)}>{languaje === 'Español' ? 'Saber mas' : 'Know more'}</button>
           </div>
         </div>
       </div>
@@ -204,7 +212,7 @@ export default function Section({ subtitle, subtitleEN, description, description
       </div>
       {!especial && <div className='flex w-full justify-start '>
         <button type="button" className="w-full border-[2px] md:max-w-[300px] text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-[12px] px-5 py-2.5 text-center inline-flex items-center " onClick={() => redirectHandlerWindow(`https://api.whatsapp.com/send?phone=${cliente.contactos.celular.replaceAll(' ', '')}&text=hola%20Logistics%20Gear,%20quiero%20ordenar%20un%20servicio%20${subtitle}%20`)}>
-          Solicitar Cotización
+          {languaje === 'Español' ? 'Solicitar Cotización' : 'Request Quote'}
           <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
           </svg>
@@ -223,9 +231,9 @@ export default function Section({ subtitle, subtitleEN, description, description
       <div className={`relative flex flex-wrap py-10 ${tarjetas && Object.entries(tarjetas).length > 2 ? 'md:grid md:grid-cols-3' : 'md:grid md:grid-cols-2'}`}>
         {cliente && cliente[id] && cliente[id].tarjetas && Object.entries(tarjetas).map((i, index) => {
           return <div className=' w-full  md:w-auto p-5 z-50' key={index}>
-            {id !== 'experiencia' && id !== 'solucionesIT' && <Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
-            {id === 'experiencia' && <Componente2 route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
-            {id === 'solucionesIT' && <Componente3 route={i[0]} hash={i[1].hash} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} />}
+            {id !== 'experiencia' && id !== 'solucionesIT' && <Componente route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />}
+            {id === 'experiencia' && <Componente2 route={i[0]} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />}
+            {id === 'solucionesIT' && <Componente3 route={i[0]} hash={i[1].hash} id={id} db={i[1]} title={i[1].title} image={i[1].url} paragraph={i[1].paragraph} paragraphEN={i[1].paragraphEN} />}
 
           </div>
         })}

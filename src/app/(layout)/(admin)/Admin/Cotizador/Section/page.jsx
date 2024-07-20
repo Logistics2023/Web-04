@@ -10,6 +10,8 @@ import Loader from '@/components/Loader'
 import { useRouter } from 'next/navigation';
 import Modal from '@/components/Modal'
 import InputFlotante from '@/components/InputFlotante'
+import SelectSimple from '@/components/SelectSimple'
+import { equipoDB, mercanciaDB, tipoDeUnidadDB } from '@/db/arrDB'
 
 export default function Home() {
     const { user, introVideo, userDB, setUserProfile, setUserSuccess, success, setUserData, postsIMG, setUserPostsIMG, item, cliente, setCliente, cart, setCart, modal, setModal } = useUser()
@@ -17,6 +19,8 @@ export default function Home() {
     const [query, setQuery] = useState('')
     const [data, setData] = useState({})
     const refFirst = useRef(null);
+    const [selectValue, setSelectValue] = useState('')
+    const inputRef = useRef('')
 
     function handlerOnChange(e, key) {
         setData({ ...data, [key]: { ...data[key], [e.target.name]: e.target.value } })
@@ -35,6 +39,9 @@ export default function Home() {
             writeUserData(`Cliente/${query}/${key}`, data[key], setUserSuccess)
         }
     }
+    function handlerClickSelect(name, i, uuid) {
+        setData({ ...data, [uuid]: { ...data[uuid], [name.replaceAll(uuid, '')]: i } })
+      }
     function saveNota(e, key) {
         e.preventDefault()
         console.log(e.target[0].value)
@@ -88,7 +95,7 @@ export default function Home() {
             refFirst.current.scrollLeft = scrollLeft + itemWidth;
         });
     };
-    console.log(cliente)
+    console.log(data)
     useEffect(() => {
         if (window && typeof window !== "undefined") {
             setQuery(window.location.href.split('=')[1])
@@ -214,7 +221,7 @@ export default function Home() {
                         <Button theme="Success" >Guardar</Button>
                     </form>}
 
-                    {(query === 'FCL') && <table className="relative text-[12px] w-[1800px] text-left  text-gray-500 ">
+                    {(query === 'FCL') && <table className="relative text-[12px] w-[2000px] text-left  text-gray-500 ">
                         <thead className="realative top-0 text-xs text-gray-700 uppercase    ">
                             <tr className="  border-y  border border-y-[#a0a0a0] " >
                                 <th scope="col" className="text-[12px] text-center font-bold px-6 py-3">
@@ -259,8 +266,9 @@ export default function Home() {
                                     <td className="px-6 py-4">
                                         < InputFlotante type="text" id={`floating_3`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['NAVIERA'] !== undefined ? data[i[0]]['NAVIERA'] : i[1]['NAVIERA']} required table label={'NAVIERA'} shadow='shadow-white' />
                                     </td>
-                                    <td className="px-6 py-4">
-                                        < InputFlotante type="text" id={`floating_4`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} required table label={'EQUIPO'} shadow='shadow-white' />
+                                    <td className="px-3 py-4 w-[200px]">
+                                        {/* < InputFlotante type="text" id={`floating_4`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} required table label={'EQUIPO'} shadow='shadow-white' /> */}
+                                        <SelectSimple arr={equipoDB} name={'EQUIPO'+i[0]} click={handlerClickSelect} defaultValue={data[i[0]] && data[i[0]]['EQUIPO'] !== undefined ? data[i[0]]['EQUIPO'] : i[1]['EQUIPO']} uuid={i[0]} diferent={true} label='Equipo' required={true}></SelectSimple>
                                     </td>
                                     <td className="px-6 py-4">
                                         < InputFlotante type="text" id={`floating_3`} onChange={(e) => handlerOnChange(e, i[0])} value={data[i[0]] && data[i[0]]['TT'] !== undefined ? data[i[0]]['TT'] : i[1]['TT']} required table label={'TT'} shadow='shadow-white' />

@@ -1,6 +1,6 @@
 'use client';
 import { useUser } from '@/context/Context'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { onAuth, signInWithEmail, writeUserData, removeData } from '@/firebase/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,6 +11,8 @@ import { useRouter } from 'next/navigation';
 import Modal from '@/components/Modal'
 import InputFlotante from '@/components/InputFlotante'
 import { generateUUID } from '@/utils/UIDgenerator'
+import SelectSimple from '@/components/SelectSimple'
+import { equipoDB, mercanciaDB, tipoDeUnidadDB } from '@/db/arrDB'
 
 export default function Home() {
 
@@ -18,44 +20,20 @@ export default function Home() {
     const router = useRouter()
     const [query, setQuery] = useState('')
     const [data, setData] = useState({})
-    const [data2, setData2] = useState({})
-    const [data3, setData3] = useState({})
-    const [data4, setData4] = useState({})
+    const [selectValue, setSelectValue] = useState('')
+
+    const inputRef = useRef('')
 
 
     function handlerOnChange(e, key) {
         setData({ ...data, [e.target.name]: e.target.value })
     }
-console.log(data)
+    console.log(selectValue)
 
 
-    // -------------------------------------------
-    function handlerLess2(d) {
-        if (d === 'd2') {
-            let db = { ...data2 };
-            delete db[`item${data2 !== undefined && Object.keys(data2).length - 1}`];
-            return setData2(db)
-        }
-        if (d === 'd3') {
-            let db = { ...data3 };
-            delete db[`item${data3 !== undefined && Object.keys(data3).length - 1}`];
-            return setData3(db)
-        }
-        if (d === 'd4') {
-            let db = { ...data4 };
-            delete db[`item${data4 !== undefined && Object.keys(data4).length - 1}`];
-            return setData4(db)
-        }
-    }
-
-    function onChangeHandler2(e, index) {
-        setData2({ ...data2, [`item${index}`]: { ...data2[`item${index}`], [e.target.name]: e.target.value } })
-    }
-    function saveEspecificaciones(e) {
-        e.preventDefault()
-        setUserSuccess('Cargando')
-        writeUserData(`/Cliente/${query}/tarjetas/${route}/especificaciones`, data2, setUserSuccess)
-    }
+    function handlerClickSelect(name, i, uuid) {
+        setSelectValue(i)
+      }
 
 
 
@@ -64,14 +42,9 @@ console.log(data)
         e.preventDefault()
         let key = generateUUID()
         setUserSuccess('Cargando')
-        writeUserData(`${route}/${key}`, data, setUserSuccess)
+        writeUserData(`${route}/${key}`, {...data, EQUIPO: selectValue}, setUserSuccess)
     }
-    function saveColumns(e, route, db) {
-        e.preventDefault()
-        let key = generateUUID()
-        setUserSuccess('Cargando')
-        writeUserData(`${route}/${key}`, db, setUserSuccess)
-    }
+
 
     function close(e) {
         router.back()
@@ -117,7 +90,10 @@ console.log(data)
                             < InputFlotante type="text" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['ORIGEN']} required label={'ORIGEN'} shadow='shadow-white' />
                             < InputFlotante type="text" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['DESTINO']} required label={'DESTINO'} shadow='shadow-white' />
                             < InputFlotante type="text" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['NAVIERA']} required label={'NAVIERA'} shadow='shadow-white' />
-                            < InputFlotante type="number" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['EQUIPO']} required label={'EQUIPO'} shadow='shadow-white' />
+
+                            {/* < InputFlotante type="number" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['EQUIPO']} required label={'EQUIPO'} shadow='shadow-white' /> */}
+                            <SelectSimple arr={inputRef.current && Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique).length > 0 ? Object.values(cliente.priceFCL).filter((i) => i.ORIGEN === inputRef.current.value && i.DESTINO === inputRef2.current.value).map((i) => i.EQUIPO).filter(onlyUnique) : equipoDB} name='EQUIPO' click={handlerClickSelect} defaultValue={selectValue ? selectValue : 'Seleccionar'} uuid='8768798' label='Equipo' required={true}></SelectSimple>
+
                             < InputFlotante type="text" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['TT']} required label={'TT'} shadow='shadow-white' />
                             < InputFlotante type="date" id="floating_5" onChange={(e) => handlerOnChange(e,)} defaultValue={data['VALIDEZ']} required label={'VALIDEZ'} shadow='shadow-white' />
 

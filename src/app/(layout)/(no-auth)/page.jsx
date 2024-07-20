@@ -73,28 +73,7 @@ export default function Home() {
     QRreaderUtils(e, setCode)
 
   }
-  // let data = priceFTL.reduce((acc, i, index) => {
-  //   return acc.includes(i.ORIGEN) ? acc : [...acc, i.ORIGEN]
-  // }, [])
 
-  async function HandlerCheckOut(e) {
-
-    //  const data =  Object.entries(calcValue).map((i, index) => `${i[0]}: ${i[1]}`)
-    router.push('PDF')
-    return
-
-    const db = Object.entries(calcValue).reverse().reduce((acc, i, index) => {
-      const data = `${i[0]}: ${i[1]}\n`
-      return data + '\r\n' + acc
-    }, ``)
-
-    var whatsappMessage = "SOLICITUD DE SERVICIO" + "\r\n\r\n" + db
-    whatsappMessage = window.encodeURIComponent(whatsappMessage)
-    console.log(whatsappMessage)
-    // window.open(`https://api.whatsapp.com/send?phone=${perfil.whatsapp.replaceAll(' ', '')}&text=${whatsappMessage}`, '_blank')
-    window.open(`https://api.whatsapp.com/send?phone=+59169941749&text=${whatsappMessage}`, '_blank')
-
-  }
   async function HandlerCheckOut2() {
     const db = Object.entries({ ORIGEN: inputRef.current.value, DESTINO: inputRef2.current.value, ...selectValue }).reverse().reduce((acc, i, index) => {
       const data = `${i[0]}: ${i[1]}\n`

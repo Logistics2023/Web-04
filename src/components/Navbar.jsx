@@ -11,7 +11,7 @@ import { Translator, getTranslation } from '@miracleufo/react-g-translator';
 
 
 export default function BottomNavigation({ rol }) {
-    const { user, userDB, modal, setModal, setUserProfile, languaje, setLanguaje, setUserSuccess, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav, navItem, setNavItem, setSeeMore } = useUser()
+    const { user, userDB, modal, setModal, setUserProfile, languaje, setSelect, setLanguaje, setUserSuccess, setUserData, setUserProduct, setRecetaDB, setUserCart, setUserDistributorPDB, filter, setFilter, nav, setNav, navItem, setNavItem, setSeeMore } = useUser()
     const [show, setShow] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [scrollY, setScrollY] = useState(0)
@@ -24,6 +24,7 @@ export default function BottomNavigation({ rol }) {
     }
 
     function handlerNavItem(item) {
+        setSelect(null)
         navItem === item
             ? setNavItem('')
             : setNavItem(item)
@@ -49,6 +50,7 @@ export default function BottomNavigation({ rol }) {
     }
     function handlerClickSelect(name, i, uuid) {
         setLanguaje(i)
+        handlerNavItem('')
         setTimeout(() => {
             setUserSuccess('')
         }, 1);
