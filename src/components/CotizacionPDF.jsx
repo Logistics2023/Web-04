@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 
 
 const PDFView = ({ click }) => {
-    const { user, userDB, pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL, selectValue, setSelectValue, naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
+    const { user, userDB, pdfData, setUserPdfData, calcValueFCL, setCalcValueFCL, languaje, selectValue, setSelectValue, naviera, calcValue, setCalcValue, element, setElement, cliente } = useUser()
 
     const [isCliente, setisCliente] = useState(false);
 
@@ -202,37 +202,37 @@ const PDFView = ({ click }) => {
                             {element === 'FTL' && calcValue &&
                                 <>
                                     <View style={styles.box}>
-                                        <Text style={styles.title}>DETALLES</Text>
+                                        <Text style={styles.title}>{languaje === 'Español' ? 'DETALLES' : 'DETAILS'}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>ORIGEN</Text><Text style={styles.value}>{calcValue['ORIGEN']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'ORIGEN' : 'ORIGIN'}</Text><Text style={styles.value}>{calcValue['ORIGEN']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>DESTINO</Text><Text style={styles.value}>{calcValue['DESTINO']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'DESTINO' : 'DESTINATION'}</Text><Text style={styles.value}>{calcValue['DESTINO']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>MERCACIA</Text><Text style={styles.value}>{calcValue['MERCANCIA']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'MERCACIA' : 'MERCHANDISE'}</Text><Text style={styles.value}>{calcValue['MERCANCIA']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>PESO</Text><Text style={styles.value}>{calcValue['PESO (KG)']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'PESO' : 'WEIGHT'}</Text><Text style={styles.value}>{calcValue['PESO (KG)']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>VOLUMEN</Text><Text style={styles.value}>{calcValue['VOLUMEN M3']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'VOLUMEN' : 'VOLUME'}</Text><Text style={styles.value}>{calcValue['VOLUMEN M3']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>TIPO DE UNIDAD</Text><Text style={styles.value}>{calcValue['TIPO DE UNIDAD']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'TIPO DE UNIDAD' : 'UNIT TYPE'}</Text><Text style={styles.value}>{calcValue['TIPO DE UNIDAD']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>SERVICIO</Text><Text style={styles.value}>{calcValue['SERVICIO']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}</Text><Text style={styles.value}>{calcValue['SERVICIO']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>FLETE USD</Text><Text style={styles.value}>{calcValue['FLETE USD']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'FLETE USD' : 'FREIGHT USD'}</Text><Text style={styles.value}>{calcValue['FLETE USD']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>SERVICIOS LOGISTICOS USD</Text><Text style={styles.value}>{calcValue['SERVICIOS LOGISTICOS USD']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'SERVICIOS LOGISTICOS USD' : 'USD LOGISTICS SERVICES'}</Text><Text style={styles.value}>{calcValue['SERVICIOS LOGISTICOS USD']}</Text>
                                     </View>
                                     <View style={styles.content}>
-                                        <Text style={styles.key}>TOTAL</Text><Text style={{ ...styles.value, backgroundColor: '#E2B92D' }}>{calcValue['TOTAL']}</Text>
+                                        <Text style={styles.key}>{languaje === 'Español' ? 'TOTAL' : 'TOTAL'}</Text><Text style={{ ...styles.value, backgroundColor: '#E2B92D' }}>{calcValue['TOTAL']}</Text>
                                     </View>
 
                                 </>
@@ -248,34 +248,34 @@ const PDFView = ({ click }) => {
 
                                             return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO) && <>
                                                 <View style={styles.box}>
-                                                    <Text style={styles.title}>DETALLES</Text>
+                                                    <Text style={styles.title}>{languaje === 'Español' ? 'DETALLES' : 'DETAILS'}</Text>
                                                 </View>
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>Origen</Text><Text style={styles.value}>{item.ORIGEN}</Text>
+                                                    <Text style={styles.key}>{languaje === 'Español' ? 'Origen' : 'Origin'}</Text><Text style={styles.value}>{item.ORIGEN}</Text>
                                                 </View>
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>Destino</Text><Text style={styles.value}>{item.DESTINO}</Text>
+                                                    <Text style={styles.key}>{languaje === 'Español' ? 'Destino' : 'Destination'}</Text><Text style={styles.value}>{item.DESTINO}</Text>
                                                 </View>
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>Equipo</Text><Text style={styles.value}>{item.EQUIPO}</Text>
+                                                    <Text style={styles.key}>{languaje === 'Español' ? 'Equipo' : 'Equipment'}</Text><Text style={styles.value}>{item.EQUIPO}</Text>
                                                 </View>
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>TT</Text><Text style={styles.value}>{item.TT}</Text>
+                                                    <Text style={styles.key}>{languaje === 'Español' ? 'TT' : 'TT'}</Text><Text style={styles.value}>{item.TT}</Text>
                                                 </View>
                                                 {item.flete && <View style={styles.box}>
-                                                    <Text style={styles.title}>FLETE</Text>
+                                                    <Text style={styles.title}>{languaje === 'Español' ? 'FLETE' : 'FREIGHT'}</Text>
                                                 </View>}
                                                 {item.flete && Object.entries(item.flete).map((i, index) => <View style={styles.content}>
                                                     <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos origen'] && <View style={styles.box}>
-                                                    <Text style={styles.title}>RECARGOS ORIGEN</Text>
+                                                    <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'ORIGIN SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <View style={styles.content}>
                                                     <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos destino'] && <View style={styles.box}>
-                                                    <Text style={styles.title}>RECARGOS DESTINO</Text>
+                                                    <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS DESTINO' : 'DESTINATION SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <View style={styles.content}>
                                                     <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
@@ -283,7 +283,7 @@ const PDFView = ({ click }) => {
 
 
                                                 <View style={styles.content}>
-                                                    <Text style={styles.key}>TOTAL</Text><Text style={{ ...styles.value, fontWeight: 'bold', backgroundColor: 'yellow' }}>
+                                                    <Text style={styles.key}>{languaje === 'Español' ? 'TOTAL' : 'TOTAL'}</Text><Text style={{ ...styles.value, fontWeight: 'bold', backgroundColor: 'yellow' }}>
                                                         {
                                                             !isNaN((item.flete && item.flete !== undefined ? Object.values(item.flete).reduce((acc, i) => {
                                                                 let cal = i['ic'] ? acc + i['ic'] * 1 : acc
@@ -326,27 +326,40 @@ const PDFView = ({ click }) => {
                                 <Text style={{}}>
                                     <Br />
                                     <Br />
-                                    Nota importante para cotizaciones de transporte terrestre:
+                                    {languaje === 'Español'
+                                        ? 'Nota importante para cotizaciones de transporte terrestre:'
+                                        : 'Important note for ground transportation quotes:'}
                                 </Text>
 
                                 <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
                                     {cliente.notaFTL}
                                     {/* Por favor tenga en cuenta que las tarifas proporcionadas en esta cotización son estimaciones preliminares y están sujetas a variaciones en caso de cambios en las dimensiones o el peso de la carga. Además, estas tarifas son válidas únicamente para carga general. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para carga que requiera condiciones especiales o exceda las dimensiones o pesos estándares, es necesario que se ponga en contacto con nosotros para ajustar la cotización a sus necesidades específicas. */}
                                     <Br /><Br />
-                                    Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de:<Br /> <Br />
+
+
+                                    {languaje === 'Español'
+                                        ? 'Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de:'
+                                        : 'For inquiries or personalized quotes, you can contact us through:'}
+                                    <Br /> <Br />
                                 </Text>
                             </View>
                             }
                             {element === 'FCL' && calcValueFCL && calcValueFCL !== 'NO DATA' && <View style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontSize: '10px', fontFamily: 'Inter', fontWeight: 'medium', }}>
                                 <Text>
-                                    Nota importante sobre las cotizaciones automáticas:                            </Text>
+                                    {languaje === 'Español'
+                                        ? 'Nota importante sobre las cotizaciones automáticas:'
+                                        : 'Important note about automatic quotes:'}
+                                </Text>
                                 <Text style={{ width: '100%', padding: '3px', textAlign: 'center', color: 'black', fontFamily: 'Inter', fontWeight: 'medium', fontSize: '10px' }}>
                                     <Br /> <Br />
                                     <Br /> <Br />
                                     {cliente.notaFCL}
                                     {/* Las tarifas generadas automáticamente por este cotizador están sujetas a la confirmación de espacio por las navieras y aplican exclusivamente para carga general no peligrosa ni sobredimensionada. Tenga en cuenta que el seguro no está incluido en las tarifas mostradas y es obligatorio contar con un seguro para el transporte de la carga. Logistics Gear no se hace responsable por daños o pérdidas durante el transporte sin cobertura de seguro adecuada. Para cargas clasificadas como IMO o que excedan las dimensiones estándar, les solicitamos contactar directamente a través de nuestros siguientes canales para obtener una cotización adecuada a sus necesidades específicas: */}
                                     <Br /><Br />
-                                    Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de <Br /> <Br />
+                                    {languaje === 'Español'
+                                        ? 'Para consultas o cotizaciones personalizadas, puede comunicarse con nosotros a través de:'
+                                        : 'For custom inquiries or quotes, you can contact us via:'}
+                                    <Br /> <Br />
                                 </Text>
                             </View>}
 
@@ -371,8 +384,10 @@ const PDFView = ({ click }) => {
                 {({ blob, url, loading, error }) =>
                     loading
                         ? <button type="submit" className="w-full flex  justify-center items-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-[12px]  px-5 py-2 text-center" onClick={() => handlerBlob(blob)}>
-
-                            Generando PDF
+                            {languaje === 'Español'
+                                ? 'Generando PDF'
+                                : 'Generating PDF'}
+                           
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.568 1.4248L20.3932 5.41231V20.5758H6.10352V20.6253H20.442V5.46249L16.568 1.4248Z" fill="#909090" />
                                 <path d="M16.5205 1.375H6.05469V20.5755H20.3932V5.41269L16.5205 1.375Z" fill="#F4F4F4" />
