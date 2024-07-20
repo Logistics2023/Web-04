@@ -61,7 +61,7 @@ export default function BottomNavigation({ rol }) {
         return () => window.removeEventListener('scroll', controlNavbar);
     }, [lastScrollY, show, filter, languaje]);
     return <>
-        <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 500 ? 'bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] lg:border-b lg:border-gray-200' : ''}`}>
+        <nav className={`fixed  w-screen   transition-all ${pathname == '/Glosario' ? ' bg-gradient-to-br from-[#00195c] via-[#274492] to-[#00195c]' : ''} z-40  ${show ? 'top-0' : 'top-[-100px]'} transition-all  ${scrollY > 50 ? 'bg-gradient-to-t from-[#00195cdc] via-[#00195cb6] to-[#00195cdc] lg:border-b lg:border-gray-200' : ''}`}>
             {/* <div className='absolute top-0 justify-space-between'>
             <div id='Tracking'></div>
             <div id='FTL'></div>
@@ -88,9 +88,6 @@ export default function BottomNavigation({ rol }) {
 
                     </div>
                 }
-
-
-
                 {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' &&
                     <div className='relative  flex items-center  lg:hidden'>
                         {
@@ -116,7 +113,8 @@ export default function BottomNavigation({ rol }) {
 
 
 
-                {pathname === '/' && pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default">
+                {/* {pathname === '/' && pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default"> */}
+                { pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default">
 
                     <ul className="list-none font-medium flex flex-col p-4 md:p-0 mt-0 rounded-lg md:flex-row md:items-center md:space-x-8  ">
                         <li onClick={() => handlerNavItem('Inicio')}>
@@ -223,13 +221,13 @@ export default function BottomNavigation({ rol }) {
 
                         <li>
                             {
-                                pathname === '/' && (user
+                                pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && (user
                                     ? <button className=' relative h-[35px]  z-50 bg-[#F7BE38] p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => handleSignOut()}>{languaje === 'Español' ? 'Cerrar Sesión' : 'Logout'}</button>
                                     : <button className=' relative h-[35px] z-50 bg-[#F7BE38]   p-2 px-5 rounded-[5px] border hidden lg:block' onClick={() => router.push('/Login')}>{languaje === 'Español' ? 'Iniciar Sesión' : 'Login'}</button>
                                 )
                             }
                         </li>
-                        {pathname === '/' && <li>
+                        {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <li>
                             <button className='flex items-center text-white h-[35px]  bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-blue-800      rounded-[5px] border    text-center  p-2 px-5' onClick={() => window.open('https://sistemas.logisticsgear.net')}>
                                 <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10 10C11.1046 10 12 9.10457 12 8C12 6.89543 11.1046 6 10 6C8.89543 6 8 6.89543 8 8C8 9.10457 8.89543 10 10 10Z" stroke="white" stroke-width="1.5" />
@@ -243,7 +241,7 @@ export default function BottomNavigation({ rol }) {
                         </li>}
                         <div className='relative w-[100px]'>
 
-                            {pathname === '/' && <SelectSimple arr={['Español', 'English']} bg='bg-[#F7BE38] text-black border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje} />}
+                            {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <SelectSimple arr={['Español', 'English']} bg='bg-[#F7BE38] text-black border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje} />}
 
                         </div>
 

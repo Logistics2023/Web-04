@@ -124,6 +124,14 @@ export default function Home() {
                                     })
                                     }
                                 </tr>
+                                <tr className="  border-y  border border-y-[#a0a0a0] " >
+                                    {data2 && data2 !== undefined && Object.values(data2).map((i, index) => {
+                                        return <th scope="col" className="text-[12px] text-center font-bold px-6 py-4" >
+                                            < InputFlotante type="text" name={`ipEN`} uid={`column_${index}`} onChange={(e) => onChangeHandler2(e, index, 'd2')} value={data2[`item${index}`][`ipEN`] && data2[`item${index}`][`ipEN`] ? data2[`item${index}`][`ipEN`] : i[`ipEN`]} required label={'Columna Ingles'} shadow='shadow-white' />
+                                            </th>
+                                    })
+                                    }
+                                </tr>
                             </thead>
                             <tbody className='space-y-5'>
                                 <tr className="bg-white border-b  hover:bg-gray-50 border border-b-[#a0a0a0] " >
@@ -165,6 +173,14 @@ export default function Home() {
                                     {data3 && data3 !== undefined && Object.values(data3).map((i, index) => {
                                         return <th scope="col" className="text-[12px] text-center font-bold px-6 py-4">
                                             < InputFlotante type="text" name={`ip`} uid={`column_${index}`} onChange={(e) => onChangeHandler2(e, index, 'd3')} value={data3[`item${index}`][`ip`] && data3[`item${index}`][`ip`] ? data3[`item${index}`][`ip`] : i[`ip`]} required label={'Columna'} shadow='shadow-white' />
+                                            </th>
+                                    })
+                                    }
+                                </tr>
+                                <tr className="  border-y  border border-y-[#a0a0a0] " >
+                                    {data3 && data3 !== undefined && Object.values(data3).map((i, index) => {
+                                        return <th scope="col" className="text-[12px] text-center font-bold px-6 py-4">
+                                            < InputFlotante type="text" name={`ipEN`} uid={`column_${index}`} onChange={(e) => onChangeHandler2(e, index, 'd3')} value={data3[`item${index}`][`ipEN`] && data3[`item${index}`][`ipEN`] ? data3[`item${index}`][`ipEN`] : i[`ipEN`]} required label={'Columna Ingles'} shadow='shadow-white' />
                                             </th>
                                     })
                                     }
@@ -211,6 +227,14 @@ export default function Home() {
                                     {data4 && data4 !== undefined && Object.values(data4).map((i, index) => {
                                         return <th scope="col" className="text-[12px] text-center font-bold px-6 py-4">
                                             < InputFlotante type="text" name={`ip`} uid={`column_${index}`} onChange={(e) => onChangeHandler2(e, index, 'd4')} value={data4[`item${index}`][`ip`] && data4[`item${index}`][`ip`] ? data4[`item${index}`][`ip`] : i[`ip`]} required label={'Columna'} shadow='shadow-white' />
+                                        </th>
+                                    })
+                                    }
+                                </tr>
+                                <tr className="  border-y  border border-y-[#a0a0a0] " >
+                                    {data4 && data4 !== undefined && Object.values(data4).map((i, index) => {
+                                        return <th scope="col" className="text-[12px] text-center font-bold px-6 py-4">
+                                            < InputFlotante type="text" name={`ipEN`} uid={`column_${index}`} onChange={(e) => onChangeHandler2(e, index, 'd4')} value={data4[`item${index}`][`ipEN`] && data4[`item${index}`][`ipEN`] ? data4[`item${index}`][`ipEN`] : i[`ipEN`]} required label={'Columna Ingles'} shadow='shadow-white' />
                                         </th>
                                     })
                                     }

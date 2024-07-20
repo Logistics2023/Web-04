@@ -441,17 +441,32 @@ export default function Home() {
                 calcValueFCL.map((item) => {
 
                   return naviera === item.NAVIERA && selectValue.EQUIPO.includes(item.EQUIPO) && <div className=" pt-5 " >
-                    <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}DETALLES</h5>
+                    <h5 className='px-5 py-1 my-2 bg-blue-700  text-white  '>{languaje === 'Español' ? 'SERVICIO' : 'SERVICE'}</h5>
                     <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Origen' : 'Origin'}</span><span className='w-full border px-3 py-1'>{item.ORIGEN}</span></div>
                     <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Destino' : 'Destination'}</span><span className='w-full border px-3 py-1'>{item.DESTINO}</span></div>
                     <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'Español' ? 'Equipo' : 'Equipment'}</span><span className='w-full border px-3 py-1'>{item.EQUIPO}</span></div>
                     <div className='flex w-full'><span className='w-full bg-slate-100  font-bold border px-3 py-1'>TT</span><span className='w-full border px-3 py-1'>{item.TT}</span></div>
-                    {item.flete && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'SERVICIO' : 'FREIGHT'}</h5>}
-                    {item.flete && Object.entries(item.flete).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
-                    {item['recargos origen'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'CORIGEN SURCHARGES'}  </h5>}
-                    {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
+                    {item.flete && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'FLETE' : 'FREIGHT'}</h5>}
+                    {item.flete && Object.entries(item.flete).map((i, index) => <div className='flex w-full'>
+
+                      <span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'English' && i[1].ipEN ? i[1].ipEN: i[1].ip}</span>
+                      <span className='w-full border px-3 py-1'>{i[1].ic} USD</span>
+
+                    </div>)}
+                    {item['recargos origen'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'ORIGIN SURCHARGES'}  </h5>}
+                    {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <div className='flex w-full'>
+
+                      <span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'English' && i[1].ipEN ? i[1].ipEN: i[1].ip}</span>
+                      <span className='w-full border px-3 py-1'>{i[1].ic} USD</span>
+
+                    </div>)}
                     {item['recargos destino'] && <h5 className='px-5 py-1 my-2 bg-blue-700  text-white '>{languaje === 'Español' ? 'RECARGOS DESTINO' : 'DESTINATION SURCHARGES'} </h5>}
-                    {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <div className='flex w-full'><span className='w-full bg-slate-100 font-bold border px-3 py-1'>{i[1].ip}</span><span className='w-full border px-3 py-1'>{i[1].ic} USD</span></div>)}
+                    {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <div className='flex w-full'>
+
+                      <span className='w-full bg-slate-100 font-bold border px-3 py-1'>{languaje === 'English' && i[1].ipEN ? i[1].ipEN: i[1].ip}</span>
+                      <span className='w-full border px-3 py-1'>{i[1].ic} USD</span>
+
+                    </div>)}
                     <div className='flex w-full bg-[#ffbb00] border-[#ffcc41]'>
                       <span className='w-full  font-bold border border-[#ffcc41] px-3 py-1'>TOTAL USD</span>
                       <Translator from='es' to={languaje.slice(0, 2).toLowerCase()}>

@@ -266,19 +266,19 @@ const PDFView = ({ click }) => {
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'FLETE' : 'FREIGHT'}</Text>
                                                 </View>}
                                                 {item.flete && Object.entries(item.flete).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos origen'] && <View style={styles.box}>
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS ORIGEN' : 'ORIGIN SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos origen'] && Object.entries(item['recargos origen']).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
                                                 {item['recargos destino'] && <View style={styles.box}>
                                                     <Text style={styles.title}>{languaje === 'Español' ? 'RECARGOS DESTINO' : 'DESTINATION SURCHARGES'}</Text>
                                                 </View>}
                                                 {item['recargos destino'] && Object.entries(item['recargos destino']).map((i, index) => <View style={styles.content}>
-                                                    <Text style={styles.key}>{i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
+                                                    <Text style={styles.key}>{languaje === 'English' && i[1].ipEN ?i[1].ipEN :i[1].ip}</Text><Text style={styles.value}>{i[1].ic}</Text>
                                                 </View>)}
 
 
@@ -387,7 +387,7 @@ const PDFView = ({ click }) => {
                             {languaje === 'Español'
                                 ? 'Generando PDF'
                                 : 'Generating PDF'}
-                           
+
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.568 1.4248L20.3932 5.41231V20.5758H6.10352V20.6253H20.442V5.46249L16.568 1.4248Z" fill="#909090" />
                                 <path d="M16.5205 1.375H6.05469V20.5755H20.3932V5.41269L16.5205 1.375Z" fill="#F4F4F4" />
