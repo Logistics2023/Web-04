@@ -98,7 +98,7 @@ export default function BottomNavigation({ rol }) {
                         }
 
                         <div className='relative w-[60px] mr-2'>
-                            {pathname === '/' && <SelectSimple arr={['Español', 'English']} bg='bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 text-white border-white' position={'absolute left-0 md:px-1 sm:px-4'} click={handlerClickSelect} defaultValue={languaje.slice(0, 2)} />}
+                            {pathname === '/' && <SelectSimple arr={['Español', 'English']} bg='bg-gradient-to-r from-blue-900 via-blue-900 to-blue-900 text-white border-[#ffffff38]' position={'absolute left-0 md:px-1 sm:px-4'} click={handlerClickSelect} defaultValue={languaje.slice(0, 2)} />}
                         </div>
 
                         <button type="button" className="  relative flex items-center  w-[40px] h-[40px] justify-center text-[12px] text-gray-500 rounded-lg lg:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 z-50" onClick={openNav}>
@@ -114,7 +114,7 @@ export default function BottomNavigation({ rol }) {
 
 
                 {/* {pathname === '/' && pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default"> */}
-                { pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default">
+                {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <div className="hidden w-screen lg:block md:w-auto " id="navbar-default">
 
                     <ul className="list-none font-medium flex flex-col p-4 md:p-0 mt-0 rounded-lg md:flex-row md:items-center md:space-x-8  ">
                         <li onClick={() => handlerNavItem('Inicio')}>
@@ -241,7 +241,7 @@ export default function BottomNavigation({ rol }) {
                         </li>}
                         <div className='relative w-[100px]'>
 
-                            {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <SelectSimple arr={['Español', 'English']} bg='bg-[#F7BE38] text-black border-white' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje} />}
+                            {pathname !== '/Login' && pathname !== '/SignUp' && pathname !== '/Register' && <SelectSimple arr={['Español', 'English']} bg='bg-[#F7BE38] text-black border-[#ffffff38]' position={'absolute left-0 px-4'} click={handlerClickSelect} defaultValue={languaje} />}
 
                         </div>
 
@@ -275,7 +275,7 @@ export default function BottomNavigation({ rol }) {
             <div className='pt-[50PX]'>
 
                 <Link href='/' onClick={() => setNav(false)}>
-                    <h3 className="flex justify-center items-center text-black text-[12px] font-medium pt-2 pl-5 m-0 border border-white bg-[#F1BA06] text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">
+                    <h3 className="flex justify-center items-center text-black text-[12px] font-medium pt-2 pl-5 m-0 border border-[#ffffff38] bg-[#F1BA06] text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">
                         {languaje === 'Español' ? 'INICIO' : 'HOME'}
                         {/* <svg className="ml-10 rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -315,7 +315,7 @@ export default function BottomNavigation({ rol }) {
 
                 </div>
                 <h3 className="text-white text-[12px] font-medium pt-2 pl-5 m-0">{languaje === 'Español' ? 'SERVICIOS ESPECIALIZADOS' : 'SPECIALIZED SERVICES'}</h3>
-                <div className='grid grid-cols-2 gap-[20px] p-[20px] pt-[10px]'>
+                <div className='grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] border-[#ffffff38] border-b-[5px] mb-10'>
 
                     <Link href='/#proyecto' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                         <img src="/icons/CARGA REFRIGERADA.png" className=" w-[35px]" alt="" />
@@ -331,47 +331,35 @@ export default function BottomNavigation({ rol }) {
                     </Link>
                 </div>
 
-                <Link href='/SolucionesIT' onClick={() => setNav(false)}>
-                    <h3 className="text-black text-[12px] font-medium pt-2 pl-5 m-0 bg-[#F1BA06]  border border-white text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'SOLUCIONES IT' : 'IT SOLUTIONS'}</h3>
-                </Link>
 
-                <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] '>
-                    <Link href='/Calculadora' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/CALCULADORA DE PESO CARGABLE.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de peso cargable' : 'Loadable Weight Calculator'}</span>
-                    </Link>
-                    <Link href='/Impuestos' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/CALCULADORA DE IMPUESTOS.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de impuestos' : 'tax calculator'} </span>
-                    </Link>
-                    <Link href='/Tracking' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/DIRECCION.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Tracking' : 'Tracking'}</span>
-                    </Link>
-                </div>
 
-                <Link href='/SolucionesIT' onClick={() => setNav(false)}>
-                    <h3 className="text-black text-[12px] font-medium pt-2 pl-5 m-0 bg-[#F1BA06]  border border-white text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'GUIA COMEX' : 'IT SOLUTIONS'}</h3>
-                </Link>
 
-                <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] '>
-                    <Link href='/Contenedores?item=maritimos' onClick={() => setNav(false)} className='bg-[#F1BA06] flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/TIPOS DE CONTENEDORES MARITIMOS.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Contenedores maritimos' : 'Maritime containers'}</span>
+
+
+                    <Link href='/SolucionesIT' onClick={() => setNav(false)}>
+                        <h3 className="text-black text-[12px] font-medium pt-2 pl-5 m-0 bg-[#F1BA06]  border border-[#ffffff38] text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'SOLUCIONES IT' : 'IT SOLUTIONS'}</h3>
                     </Link>
-                    <Link href='/Contenedores?item=aereos' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center justify-around px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/TIPOS DE CONTENEDORES AEREOS.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Contenedores aereos' : 'Air containers'}</span>
-                    </Link>
-                    <Link href='/Glosario' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
-                        <img src="/icons/GLOSARIO.png" className=" w-[35px]" alt="" />
-                        <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Glosario' : 'Glossary'}</span>
-                    </Link>
-                </div>
+
+                    <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] border-[#ffffff38] border-b-[5px] mb-10'>
+                        <Link href='/Calculadora' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/CALCULADORA DE PESO CARGABLE.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de peso cargable' : 'Loadable Weight Calculator'}</span>
+                        </Link>
+                        <Link href='/Impuestos' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/CALCULADORA DE IMPUESTOS.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Calculadora de impuestos' : 'tax calculator'} </span>
+                        </Link>
+                        <Link href='/Tracking' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/DIRECCION.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Tracking' : 'Tracking'}</span>
+                        </Link>
+                    </div>
+
+
                 <Link href='/Experiencia' onClick={() => setNav(false)}>
-                    <h3 className="text-black text-[12px] font-medium pt-2 pl-5 m-0 bg-[#F1BA06]  border border-white text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'EXPERIENCIA' : 'EXPERIENCE'}</h3>
+                    <h3 className="text-black text-[12px] font-medium pt-2 pl-5 m-0 bg-[#F1BA06]  border border-[#ffffff38] text-center px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'EXPERIENCIA' : 'EXPERIENCE'}</h3>
                 </Link>
-                <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] '>
+                <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] border-[#ffffff38] border-b-[5px] mb-10'>
                     <Link href='/Experiencia' onClick={() => setNav(false)} className='bg-[#F1BA06] flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
                         <img src="/icons/EXPERIENCIA.png" className=" w-[35px]" alt="" />
                         <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Nuestra huella' : 'Maritime containers'}</span>
@@ -381,9 +369,33 @@ export default function BottomNavigation({ rol }) {
                         <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Testimonios' : 'Air containers'}</span>
                     </Link>
                 </div>
-                <div className='relative grid grid-cols-2 gap-[20px] p-[100px] pt-[10px] '>
 
-                </div>
+
+
+                {/* <div className='bg-[#00000029] py-10 mt-10'> */}
+
+                    <h3 className=" text-[12px] text-left font-medium pt-2 pl-5 m-0 text-white  px-[5px] py-[5px] rounded-[7px] mx-[20px] my-[15px]">{languaje === 'Español' ? 'GUIA COMEX' : 'COMEX GUIDE'}</h3>
+
+                    <div className='relative grid grid-cols-2 gap-[20px] p-[20px] pt-[10px] '>
+                        <Link href='/Contenedores?item=maritimos' onClick={() => setNav(false)} className='bg-[#F1BA06] flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/TIPOS DE CONTENEDORES MARITIMOS.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Contenedores maritimos' : 'Maritime containers'}</span>
+                        </Link>
+                        <Link href='/Contenedores?item=aereos' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center justify-around px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/TIPOS DE CONTENEDORES AEREOS.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Contenedores aereos' : 'Air containers'}</span>
+                        </Link>
+                        <Link href='/Glosario' onClick={() => setNav(false)} className='bg-[#F1BA06]   flex flex-col items-center px-[5px] py-[5px] rounded-[7px]'>
+                            <img src="/icons/GLOSARIO.png" className=" w-[35px]" alt="" />
+                            <span className="text-[12px] font-medium text-center">{languaje === 'Español' ? 'Glosario' : 'Glossary'}</span>
+                        </Link>
+                    </div>
+                    <div className='relative grid grid-cols-2 gap-[20px] p-[100px] pt-[10px] '>
+
+                    </div>
+                {/* </div> */}
+
+
             </div>
         </div>
     </>
